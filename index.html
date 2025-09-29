@@ -37,7 +37,6 @@
       color: #e6eef4;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
     }
     
     /* Cover Page Styles */
@@ -144,7 +143,7 @@
     
     /* Main content styles */
     .main-content {
-      display: none;
+      /* display: none; REMOVED THIS LINE */
     }
     
     .wrap {
@@ -341,6 +340,47 @@
       font-size: 14px;
     }
     
+    /* Experience Section */
+    .experience-item {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    
+    .experience-title {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    
+    .experience-company {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    
+    .experience-date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    
+    .experience-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
     /* Projects */
     .projects-grid {
       display: grid;
@@ -439,7 +479,17 @@
       font-weight: 800;
     }
     
-    /* skills */
+    /* Skills */
+    .skills-category {
+      margin-bottom: 20px;
+    }
+    
+    .skills-category h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -625,14 +675,14 @@
       <div class="title">Android Developer</div>
       <p class="tagline">Crafting innovative mobile experiences with Kotlin & Java</p>
       <div class="cta-buttons">
-        <a href="#" class="cta-button" id="enter-portfolio">Enter Portfolio</a>
-        <a href="#" class="cta-button" id="download-cv">Download CV</a>
+        <a href="#home" class="cta-button" id="enter-portfolio">Enter Portfolio</a>
+        <a href="Marwa-Muhammad-FlowCV-Resume-20250922.pdf" class="cta-button" id="download-cv" download>Download CV</a>
       </div>
     </div>
     <div class="scroll-indicator">Scroll down to explore</div>
   </div>
 
-  <!-- Main Content (Hidden Initially) -->
+  <!-- Main Content -->
   <div class="main-content" id="main-content">
     <header>
       <div class="wrap nav">
@@ -646,6 +696,7 @@
         <nav>
           <a href="#home" class="nav-link active">Home</a>
           <a href="#about" class="nav-link">About</a>
+          <a href="#experience" class="nav-link">Experience</a>
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#skills" class="nav-link">Skills</a>
           <a href="#certs" class="nav-link">Certificates</a>
@@ -692,12 +743,16 @@
             <p style="margin:0;color:var(--muted)">I'm <strong style="color:#fff">Marwa Muhammad Asal</strong>, an Android developer passionate about building apps that solve real-world problems and improve user experience. I'm studying Computer Science & Artificial Intelligence at Pharos University in Alexandria (GPA 3.71, expected graduation July 2026).</p>
 
             <div style="margin-top:18px">
-              <h3 style="margin:0 0 8px">Highlights</h3>
+              <h3 style="margin:0 0 8px">Education</h3>
               <div class="info-card">
-                <div class="info-row"><strong>Android</strong><span style="margin-left:auto" class="muted">Kotlin • Java • Jetpack</span></div>
-                <div class="info-row"><strong>Architecture</strong><span style="margin-left:auto" class="muted">MVVM • Design Patterns</span></div>
-                <div class="info-row"><strong>Data & ML</strong><span style="margin-left:auto" class="muted">Pandas • Deep Learning</span></div>
-                <div class="info-row"><strong>Tools</strong><span style="margin-left:auto" class="muted">Android Studio • Git • Figma</span></div>
+                <div class="info-row">
+                  <strong>Bachelor of Computer Science & Artificial Intelligence</strong>
+                  <span style="margin-left:auto" class="muted">2022 – 2026</span>
+                </div>
+                <div class="info-row">
+                  <span class="muted">Pharos University in Alexandria (PUA)</span>
+                  <span style="margin-left:auto" class="muted">GPA: 3.7</span>
+                </div>
               </div>
             </div>
           </div>
@@ -707,7 +762,7 @@
               <h3 style="margin-top:0">Contact</h3>
               <div class="info-row"><span class="muted">Location</span><strong style="margin-left:auto">Alexandria, Egypt</strong></div>
               <div class="info-row"><span class="muted">Email</span><a style="margin-left:auto;color:var(--muted)" href="mailto:marwa.mohamed.asal@gmail.com">marwa.mohamed.asal@gmail.com</a></div>
-              <div class="info-row"><span class="muted">Phone</span><strong style="margin-left:auto">01097052325</strong></div>
+              <div class="info-row"><span class="muted">Phone</span><strong style="margin-left:auto">+201097052325</strong></div>
               <div style="margin-top:10px;display:flex;gap:8px">
                 <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
                 <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
@@ -718,209 +773,14 @@
         </div>
       </section>
 
-      <!-- PROJECTS -->
-      <section id="projects">
-        <div style="display:flex;align-items:end;justify-content:space-between">
-          <div>
-            <h2>Projects</h2>
-            <div class="sub">Selected work — click a card to view details.</div>
-          </div>
-          <div style="align-self:center"><a class="muted" href="https://github.com/MarwaaMuhammad" target="_blank">View all on GitHub →</a></div>
-        </div>
-
-        <div class="projects-grid" style="margin-top:16px">
-          <!-- Card: MRI -->
-          <div class="card" data-title="MRI Brain Tumor Recognition" data-blurb="Classified brain tumors into 4 categories using medical imaging and deep learning techniques." data-features='["Image preprocessing & augmentation","CNN-based classification pipeline","Evaluation with accuracy & F1 score"]' data-stack='["Python","Deep Learning","NumPy","Pandas"]' data-link="https://github.com/MarwaaMuhammad">
-            <div class="thumb">MRI Tumor Recognition</div>
-            <h3>MRI Brain Tumor Recognition</h3>
-            <p class="muted" style="margin:0">Classifies brain tumors into 4 categories using medical imaging and ML.</p>
-            <div class="stack" aria-hidden="true">
-              <span class="chip">Python</span><span class="chip">Deep Learning</span><span class="chip">ML</span>
-            </div>
-          </div>
-
-          <!-- Card: Climate -->
-          <div class="card" data-title="Climate Change Impact on Agriculture" data-blurb="Data analysis project studying how climate variables affect agricultural productivity." data-features='["Feature engineering on climate metrics","Visualization dashboards","Regression & error analysis"]' data-stack='["Python","Pandas","Matplotlib"]' data-link="https://github.com/MarwaaMuhammad">
-            <div class="thumb">Climate & Agriculture</div>
-            <h3>Climate Change Impact on Agriculture</h3>
-            <p class="muted" style="margin:0">Analyzing climate variables and their effect on crop productivity.</p>
-            <div class="stack">
-              <span class="chip">Pandas</span><span class="chip">Data Analysis</span><span class="chip">Visualization</span>
-            </div>
-          </div>
-
-          <!-- Card: STC -->
-          <div class="card" data-title="STC Data Analysis" data-blurb="Explored public opinions and perspectives using data cleaning, EDA and reporting." data-features='["Sentiment exploration","Clean visual insights","Reproducible notebook"]' data-stack='["Python","Pandas","Jupyter"]' data-link="https://github.com/MarwaaMuhammad">
-            <div class="thumb">STC Data Analysis</div>
-            <h3>STC Data Analysis</h3>
-            <p class="muted" style="margin:0">Data cleaning, EDA and reporting for public opinion insights.</p>
-            <div class="stack">
-              <span class="chip">EDA</span><span class="chip">Sentiment</span><span class="chip">Notebooks</span>
-            </div>
-          </div>
-
-          <!-- Card: Hogwarts -->
-          <div class="card" data-title="Hogwarts Mart — E-Commerce Web App" data-blurb="Harry Potter-themed e-commerce site with front-end flow and responsive UI." data-features='["Product listing & cart","Checkout flow mock","Responsive UI"]' data-stack='["HTML","CSS","JavaScript"]' data-link="https://github.com/MarwaaMuhammad">
-            <div class="thumb">Hogwarts Mart</div>
-            <h3>Hogwarts Mart — E-Commerce Web App</h3>
-            <p class="muted" style="margin:0">Front-end store for themed merchandise with clean UX flows.</p>
-            <div class="stack">
-              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">UX</span>
-            </div>
-          </div>
-
-          <!-- Card: Workout tracker (Android placeholder) -->
-          <div class="card" data-title="Workout Tracker (Android)" data-blurb="Track workouts, sets, and progress. Built with modern Android tooling and clean architecture." data-features='["Firebase Auth","Room local DB","Retrofit API","Charts with MPAndroidChart"]' data-stack='["Kotlin","MVVM","Jetpack"]' data-link="#">
-            <div class="thumb">Workout Tracker (Android)</div>
-            <h3>Workout Tracker (Android)</h3>
-            <p class="muted" style="margin:0">An Android app to log workouts and visualize progress (placeholder).</p>
-            <div class="stack">
-              <span class="chip">Kotlin</span><span class="chip">Jetpack</span><span class="chip">Room</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-      <section id="skills">
-        <h2>Skills</h2>
-        <div class="sub">Languages, frameworks and tools I use regularly.</div>
-        <div style="margin-top:12px" class="skills-grid">
-          <div class="skill">Kotlin</div>
-          <div class="skill">Java (OOP)</div>
-          <div class="skill">Android SDK</div>
-          <div class="skill">Jetpack Components</div>
-          <div class="skill">MVVM • Design Patterns</div>
-          <div class="skill">Room • Retrofit</div>
-          <div class="skill">Python (advanced)</div>
-          <div class="skill">Pandas • NumPy</div>
-          <div class="skill">Git & GitHub</div>
-          <div class="skill">Figma</div>
-        </div>
-      </section>
-
-      <!-- CERTIFICATES -->
-      <section id="certs">
-        <h2>Certificates</h2>
-        <div class="sub">Some training and certificates I earned.</div>
-        <div style="margin-top:12px" class="cert-grid">
-          <div class="cert">Android Development — DEPI</div>
-          <div class="cert">ACPC Problem Solving</div>
-          <div class="cert">STC Data Analyst</div>
-          <div class="cert">Deep Learning Course</div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="sub">Send me a message — I'll reply as soon as possible.</div>
-
-        <form id="contactForm" onsubmit="return false" style="margin-top:12px">
-          <div>
-            <div class="field">
-              <label class="small muted">Full name</label>
-              <input id="name" placeholder="Your name" required />
-            </div>
-            <div class="field" style="margin-top:10px">
-              <label class="small muted">Email</label>
-              <input id="email" placeholder="you@example.com" required />
-            </div>
-            <div class="field" style="margin-top:10px">
-              <label class="small muted">Subject</label>
-              <input id="subject" placeholder="Subject (e.g. Internship inquiry)" />
-            </div>
-            <div class="field" style="margin-top:10px">
-              <label class="small muted">Message</label>
-              <textarea id="message" rows="6" placeholder="Write your message..." required></textarea>
-            </div>
-
-            <div style="margin-top:12px">
-              <button class="send" id="sendBtn" type="submit">Send Message</button>
-              <div id="formMsg" class="small muted" style="margin-top:8px"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="info-card">
-              <h3 style="margin:0">Contact Info</h3>
-              <div style="margin-top:8px;color:var(--muted)">Email</div>
-              <a href="mailto:marwa.mohamed.asal@gmail.com" style="color:#fff;display:block;margin-top:6px">marwa.mohamed.asal@gmail.com</a>
-
-              <div style="margin-top:12px;color:var(--muted)">Phone</div>
-              <div style="color:#fff;margin-top:6px">01097052325</div>
-
-              <div style="margin-top:12px;color:var(--muted)">Location</div>
-              <div style="color:#fff;margin-top:6px">Alexandria, Egypt</div>
-
-              <div style="margin-top:12px;display:flex;gap:8px">
-                <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-                <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-              </div>
-            </div>
-            <div style="margin-top:12px;color:var(--muted);font-size:13px">
-              Note: This contact form validates on the client and copies the message to your clipboard for easy pasting into an email (no backend). You can connect it to an email service later.
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <footer>
-        © <span id="year"></span> Marwa Muhammad Asal — Built with ❤️
-      </footer>
-    </main>
-
-    <button class="top-btn" id="topBtn" title="Back to top">↑ Top</button>
-
-    <!-- Modal -->
-    <div id="modalRoot" aria-hidden="true" style="display:none"></div>
-  </div>
-
-  <script>
-    // Cover page functionality
-    document.getElementById('enter-portfolio').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('cover-page').style.display = 'none';
-      document.getElementById('main-content').style.display = 'block';
-      window.scrollTo(0, 0);
-    });
-
-    // Download CV functionality
-    document.getElementById('download-cv').addEventListener('click', function(e) {
-      e.preventDefault();
-      // Create a temporary link to trigger download
-      const link = document.createElement('a');
-      link.href = 'Marwa-Muhammad-FlowCV-Resume-20250922.pdf'; // Update with actual file path
-      link.download = 'Marwa-Muhammad-CV.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-
-    /* ---------- typed effect ---------- */
-    const phrases = [
-      "Android Developer • Kotlin & Java",
-      "I build apps that solve real problems",
-      "Mobile dev • MVVM • Jetpack • Firebase"
-    ];
-    let tIndex = 0, charIndex = 0, typing = true;
-    const typedEl = document.getElementById('typed');
-    (function typeLoop() {
-      if (!typedEl) return;
-      const current = phrases[tIndex];
-      if (typing) {
-        charIndex++;
-        typedEl.textContent = current.slice(0, charIndex);
-        if (charIndex === current.length) {
-          typing = false;
-          setTimeout(typeLoop, 1200);
-          return;
-        }
-        setTimeout(typeLoop, 40);
-      } else {
-        charIndex--;
-        typedEl.textContent = current.slice(0, charIndex);
-        if (charIndex === 0) {
-          typing = true;
-          tIndex = (tIndex + 1) % phrases.length;
-          setTimeout(typeLoop, 200
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="sub">My professional journey and roles.</div>
+        
+        <div style="margin-top:16px">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <div class="experience-title">Coding Instructor</div>
+               
