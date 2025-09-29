@@ -1,698 +1,282 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marwa Muhammad Asal — Android Developer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marwa Muhammad — Android Developer</title>
+  <meta name="description" content="Portfolio of Marwa Muhammad — Android developer (Kotlin & Java)."/>
   <style>
-    :root {
-      --bg: #0b1220;
-      --card: #0f1722;
-      --muted: #9aa6b2;
-      --accent: #14b8a6; /* teal */
-      --accent-2: #7c3aed; /* purple */
+    :root{
+      --bg:#0b1220;
+      --card:#0f1722;
+      --muted:#9aa6b2;
+      --accent:#14b8a6;
+      --accent-2:#7c3aed;
       --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.04);
       --border: rgba(255,255,255,0.06);
-      --max-width: 1100px;
-      --radius: 14px;
+      --max-width:1100px;
+      --radius:14px;
     }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html, body {
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-    
-    body {
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: radial-gradient(1200px 600px at 10% 10%, rgba(20,184,166,0.06), transparent 6%),
                   radial-gradient(900px 400px at 90% 20%, rgba(124,58,237,0.05), transparent 6%),
                   var(--bg);
-      color: #e6eef4;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      color:#e6eef4;
+      -webkit-font-smoothing:antialiased;
+      scroll-behavior:smooth;
     }
-    
-    /* Cover Page Styles */
-    .cover-page {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
+
+    /* LANDING PAGE */
+    #landing{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      position:relative;
+      overflow:hidden;
     }
-    
-    .cover-page::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 20% 80%, rgba(20,184,166,0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(124,58,237,0.1) 0%, transparent 50%);
-      z-index: -1;
+    #landing::before{
+      content:'';
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle, rgba(20,184,166,0.15), transparent 70%);
+      border-radius:50%;
+      animation:pulse 4s ease-in-out infinite;
     }
-    
-    .cover-content {
-      max-width: 800px;
-      z-index: 1;
+    @keyframes pulse{
+      0%, 100%{transform:translate(-50%,-50%) scale(1);opacity:0.3}
+      50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.5}
     }
-    
-    .greeting {
-      font-size: 1.5rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-      letter-spacing: 2px;
+    .landing-content{position:relative;z-index:1}
+    .hello{
+      font-size:14px;
+      letter-spacing:3px;
+      color:var(--muted);
+      text-transform:uppercase;
+      margin-bottom:20px;
+      animation:fadeIn 1s ease-out;
     }
-    
-    .name {
-      font-size: 4.5rem;
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .name{
+      font-size:clamp(48px, 10vw, 96px);
+      font-weight:800;
+      line-height:1.1;
+      margin:0;
+      background:linear-gradient(135deg, #14b8a6, #7c3aed);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:fadeInUp 1s ease-out 0.2s both;
     }
-    
-    .title {
-      font-size: 1.8rem;
-      color: var(--muted);
-      margin-bottom: 30px;
+    .title{
+      font-size:clamp(24px, 4vw, 42px);
+      color:#14b8a6;
+      margin:16px 0 8px;
+      font-weight:600;
+      animation:fadeInUp 1s ease-out 0.4s both;
     }
-    
-    .tagline {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .subtitle{
+      font-size:18px;
+      color:var(--muted);
+      max-width:600px;
+      margin:0 auto 40px;
+      animation:fadeInUp 1s ease-out 0.6s both;
     }
-    
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #07101a;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      margin: 10px;
-      transition: transform 0.2s, opacity 0.2s;
+    .landing-buttons{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+      animation:fadeInUp 1s ease-out 0.8s both;
     }
-    
-    .cta-button:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#07101a;
+      padding:14px 32px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:transform 0.2s, box-shadow 0.2s;
     }
-    
-    .scroll-indicator {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--muted);
-      font-size: 0.9rem;
-      animation: bounce 2s infinite;
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 30px rgba(20,184,166,0.3);
     }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
-      }
-      40% {
-        transform: translateY(-10px) translateX(-50%);
-      }
-      60% {
-        transform: translateY(-5px) translateX(-50%);
-      }
+    .btn-secondary{
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--border);
+      color:#e6eef4;
+      padding:14px 32px;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+      transition:all 0.2s;
     }
-    
-    /* Main content styles */
-    .main-content {
-      /* display: none; REMOVED THIS LINE */
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+      transform:translateY(-2px);
     }
-    
-    .wrap {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 28px;
+    .scroll-indicator{
+      position:absolute;
+      bottom:30px;
+      left:50%;
+      transform:translateX(-50%);
+      animation:bounce 2s infinite;
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:2px;
     }
-    
-    /* NAV */
-    header {
-      position: sticky;
-      top: 12px;
-      z-index: 40;
-      backdrop-filter: blur(6px);
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+
+    /* PORTFOLIO CONTENT */
+    #portfolio{padding-bottom:80px}
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;}
+    header{
+      position:sticky;top:12px;z-index:40;backdrop-filter:blur(6px);
       background: linear-gradient(180deg, rgba(10,14,20,0.55), rgba(10,14,20,0.32));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      margin: 8px auto 22px;
-      max-width: calc(var(--max-width) + 56px);
-      padding: 10px 22px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin:8px auto 22px;
+      max-width:calc(var(--max-width) + 56px);
+      padding:10px 22px;
     }
-    
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-    
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 700;
-    }
-    
-    .brand .dot {
-      width: 10px;
-      height: 10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius: 50%;
-    }
-    
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-    
-    nav a:hover {
-      color: #fff;
-      background: var(--glass);
-    }
-    
-    nav a.active {
-      color: var(--accent);
-      background: linear-gradient(90deg, rgba(20,184,166,0.06), rgba(124,58,237,0.04));
-      border: 1px solid rgba(124,58,237,0.06);
-    }
-    
-    .cta {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #07101a;
-      padding: 8px 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    
-    .cta:hover {
-      opacity: 0.95;
-    }
-    
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: center;
-      margin-top: 12px;
-    }
-    
-    .hero-left h1 {
-      font-size: 34px;
-      margin: 0 0 10px;
-      line-height: 1.02;
-    }
-    
-    .type {
-      color: var(--accent);
-      font-weight: 700;
-    }
-    
-    .hero-left p {
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-    
-    .hero-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .btn {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      border-radius: 12px;
-      color: #e6eef4;
-      text-decoration: none;
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-    }
-    
-    .btn:hover {
-      transform: translateY(-4px);
-      transition: all .18s ease;
-    }
-    
-    /* small mock phone box */
-    .mock {
-      border-radius: 20px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 360px;
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+    .brand{display:flex;align-items:center;gap:14px;font-weight:700}
+    .brand .dot{width:10px;height:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:50%}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;font-size:14px}
+    nav a:hover{color:#fff;background:var(--glass)}
+    nav a.active{color:var(--accent);background:linear-gradient(90deg, rgba(20,184,166,0.06), rgba(124,58,237,0.04));border:1px solid rgba(124,58,237,0.06)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;padding:8px 12px;border-radius:12px;font-weight:700;text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:12px}
+    .hero-left h1{font-size:34px;margin:0 0 10px;line-height:1.02}
+    .type{color:var(--accent);font-weight:700}
+    .hero-left p{color:var(--muted);margin:0 0 16px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--glass);border:1px solid var(--border);padding:10px 14px;border-radius:12px;color:#e6eef4;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+    .btn:hover{transform:translateY(-4px);transition:all .18s ease}
+    .mock{
+      border-radius:20px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--border);height:100%;display:flex;align-items:center;justify-content:center;min-height:360px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
     }
-    
-    .mock-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      width: 80%;
-      height: 74%;
-      opacity: 0.95;
-    }
-    
-    .mock-grid > div {
+    .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:80%;height:74%;opacity:0.95}
+    .mock-grid > div{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+
+    section{margin-top:38px;padding:24px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid var(--border)}
+    h2{margin:0 0 12px;font-size:20px}
+    .sub{color:var(--muted);font-size:15px;margin-bottom:8px}
+
+    .about-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+    .info-card{padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
+    .info-row{display:flex;align-items:center;gap:10px;margin:10px 0;color:var(--muted);font-size:14px}
+
+    .exp-item{margin:16px 0;padding:16px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
+    .exp-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:8px}
+    .exp-title{font-weight:700;color:#fff}
+    .exp-company{color:var(--accent);font-size:14px}
+    .exp-date{color:var(--muted);font-size:13px}
+    .exp-item ul{margin:8px 0;padding-left:20px;color:var(--muted)}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.02);
-    }
-    
-    /* sections */
-    section {
-      margin-top: 38px;
-      padding: 24px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      border: 1px solid var(--border);
-    }
-    
-    h2 {
-      margin: 0 0 12px;
-      font-size: 20px;
-    }
-    
-    .sub {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-    
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 20px;
-      align-items: start;
-    }
-    
-    .info-card {
-      padding: 12px;
-      border-radius: 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-    
-    .info-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 10px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    
-    /* Experience Section */
-    .experience-item {
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .experience-item:last-child {
-      border-bottom: none;
-    }
-    
-    .experience-header {
-      display: flex;
-      justify-content: between;
-      align-items: flex-start;
-      margin-bottom: 8px;
-    }
-    
-    .experience-title {
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-    
-    .experience-company {
-      color: var(--accent);
-      font-weight: 500;
-    }
-    
-    .experience-date {
-      color: var(--muted);
-      font-size: 14px;
-      white-space: nowrap;
-    }
-    
-    .experience-description {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      padding: 14px;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      transition: transform .22s ease, box-shadow .22s ease, border-color .18s ease;
+      border:1px solid var(--border);padding:14px;border-radius:12px;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .18s ease;
       cursor: pointer;
     }
-    
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 60px rgba(2,6,23,0.6);
-      border-color: rgba(124,58,237,0.12);
+    .card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(2,6,23,0.6);border-color: rgba(124,58,237,0.12)}
+    .card .thumb{height:140px;border-radius:10px;background:linear-gradient(135deg, rgba(20,184,166,0.2), rgba(124,58,237,0.2));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;color:#14b8a6}
+    .card h3{margin:12px 0 6px}
+    .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .chip{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:80;padding:20px}
+    .modal{width:100%;max-width:680px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:14px;padding:24px;color:var(--muted)}
+    .modal h3{color:#fff}
+    .modal .modal-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+    .modal .screenshot{border-radius:10px;height:260px;background:linear-gradient(135deg, rgba(20,184,166,0.2), rgba(124,58,237,0.2));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:#14b8a6;font-weight:800;font-size:24px}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+    .skill{background:var(--card);padding:10px;border-radius:10px;border:1px solid var(--border);text-align:center;color:var(--muted);font-weight:600}
+
+    .cert-grid{display:flex;flex-wrap:wrap;gap:10px}
+    .cert{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);font-size:13px;color:var(--muted)}
+
+    form{display:grid;grid-template-columns:1fr 320px;gap:14px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;color:#e6eef4;outline:none}
+    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 4px 20px rgba(20,184,166,0.06)}
+    .small{font-size:13px;color:var(--muted)}
+    .send{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;border:none;padding:10px;border-radius:10px;font-weight:700;cursor:pointer}
+
+    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center}
+
+    .top-btn{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:12px;padding:12px;color:#07101a;display:none;z-index:30;box-shadow:0 12px 30px rgba(2,6,23,0.6);border:none;cursor:pointer}
+    .top-btn.show{display:block}
+
+    .muted{color:var(--muted)}
+    a.social{color:var(--muted);text-decoration:none;border-radius:8px;padding:8px}
+    a.social:hover{color:#fff;background:var(--glass)}
+
+    .typed{border-right:2px solid rgba(255,255,255,0.12);padding-right:6px;white-space:nowrap;overflow:hidden;display:inline-block}
+
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr}
+      .modal .modal-grid{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
     }
-    
-    .card .thumb {
-      height: 140px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #021018;
-    }
-    
-    .card h3 {
-      margin: 12px 0 6px;
-    }
-    
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-    
-    .chip {
-      font-size: 12px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.03);
-      color: var(--muted);
-    }
-    
-    /* modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 80;
-      padding: 20px;
-    }
-    
-    .modal {
-      width: 100%;
-      max-width: 880px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      color: var(--muted);
-    }
-    
-    .modal h3 {
-      color: #fff;
-    }
-    
-    .modal .modal-grid {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 12px;
-    }
-    
-    .modal .screenshot {
-      border-radius: 10px;
-      height: 260px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #021018;
-      font-weight: 800;
-    }
-    
-    /* Skills */
-    .skills-category {
-      margin-bottom: 20px;
-    }
-    
-    .skills-category h3 {
-      color: var(--accent);
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-    
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-    }
-    
-    .skill {
-      background: var(--card);
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      text-align: center;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    
-    /* certificates */
-    .cert-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    
-    .cert {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    
-    /* contact */
-    form {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 14px;
-    }
-    
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    
-    input, textarea {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.04);
-      padding: 10px;
-      border-radius: 10px;
-      color: #e6eef4;
-      outline: none;
-    }
-    
-    input:focus, textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(20,184,166,0.06);
-    }
-    
-    .small {
-      font-size: 13px;
-      color: var(--muted);
-    }
-    
-    .send {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #07101a;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    
-    .send:active {
-      transform: translateY(1px);
-    }
-    
-    /* footer */
-    footer {
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-    }
-    
-    /* back to top */
-    .top-btn {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius: 12px;
-      padding: 12px;
-      color: #07101a;
-      display: none;
-      z-index: 30;
-      box-shadow: 0 12px 30px rgba(2,6,23,0.6);
-      border: none;
-      cursor: pointer;
-    }
-    
-    .top-btn.show {
-      display: block;
-    }
-    
-    /* responsive */
-    @media (max-width: 1000px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-      .modal .modal-grid {
-        grid-template-columns: 1fr;
-      }
-      form {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .nav a {
-        display: none;
-      }
-      header {
-        padding: 8px 12px;
-      }
-      .brand {
-        gap: 8px;
-      }
-      .wrap {
-        padding: 18px;
-      }
-      .hero-left h1 {
-        font-size: 26px;
-      }
-      .mock {
-        min-height: 220px;
-      }
-      .name {
-        font-size: 3rem;
-      }
-      .title {
-        font-size: 1.4rem;
-      }
-    }
-    
-    /* small helpers */
-    .muted {
-      color: var(--muted);
-    }
-    
-    a.social {
-      color: var(--muted);
-      text-decoration: none;
-      border-radius: 8px;
-      padding: 8px;
-    }
-    
-    a.social:hover {
-      color: #fff;
-      background: var(--glass);
-    }
-    
-    /* typing caret */
-    .typed {
-      border-right: 2px solid rgba(255,255,255,0.12);
-      padding-right: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
+    @media (max-width:640px){
+      .nav a{display:none}
+      header{padding:8px 12px}
+      .wrap{padding:18px}
+      .hero-left h1{font-size:26px}
+      .mock{min-height:220px}
+      .name{font-size:48px}
+      .title{font-size:24px}
     }
   </style>
 </head>
 <body>
-  <!-- Cover Page -->
-  <div class="cover-page" id="cover-page">
-    <div class="cover-content">
-      <div class="greeting">HELLO, I'M</div>
+  <!-- LANDING PAGE -->
+  <div id="landing">
+    <div class="landing-content">
+      <div class="hello">HELLO, I'M</div>
       <h1 class="name">Marwa<br>Muhammad</h1>
       <div class="title">Android Developer</div>
-      <p class="tagline">Crafting innovative mobile experiences with Kotlin & Java</p>
-      <div class="cta-buttons">
-        <a href="#home" class="cta-button" id="enter-portfolio">Enter Portfolio</a>
-        <a href="Marwa-Muhammad-FlowCV-Resume-20250922.pdf" class="cta-button" id="download-cv" download>Download CV</a>
+      <p class="subtitle">Crafting innovative mobile experiences with Kotlin & Java</p>
+      <div class="landing-buttons">
+        <a href="#portfolio" class="btn-primary">Enter Portfolio</a>
+        <a href="#" class="btn-secondary" id="downloadCV">Download CV</a>
       </div>
     </div>
-    <div class="scroll-indicator">Scroll down to explore</div>
+    <div class="scroll-indicator">Scroll Down ↓</div>
   </div>
 
-  <!-- Main Content -->
-  <div class="main-content" id="main-content">
+  <!-- PORTFOLIO CONTENT -->
+  <div id="portfolio">
     <header>
       <div class="wrap nav">
         <div class="brand">
           <div class="dot"></div>
-          <div>
-            Marwa <span style="color:var(--muted);font-weight:600">Asal</span>
-          </div>
+          <div>Marwa <span style="color:var(--muted);font-weight:600">Muhammad</span></div>
         </div>
-
         <nav>
           <a href="#home" class="nav-link active">Home</a>
           <a href="#about" class="nav-link">About</a>
@@ -702,7 +286,6 @@
           <a href="#certs" class="nav-link">Certificates</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
-
         <a class="cta" href="#contact">Hire Me</a>
       </div>
     </header>
@@ -713,7 +296,7 @@
         <div class="hero-left">
           <h1>Android Developer <span class="type">Portfolio</span></h1>
           <div style="margin:6px 0">
-            <div class="sub">Motivated and detail-oriented Android developer with hands-on experience in Kotlin & Java. B.Sc. in Computer Science & AI — Pharos University (GPA 3.71, expected 2026).</div>
+            <div class="sub">Motivated Android developer skilled in Kotlin and Java, pursuing a degree in Computer Science & AI. Seeking opportunities to contribute to impactful projects and grow through real-world experience.</div>
           </div>
           <p style="margin:12px 0" class="muted">
             <span id="typed" class="typed"></span>
@@ -726,7 +309,7 @@
         </div>
 
         <div class="mock" aria-hidden="true">
-          <div class="mock-grid" role="presentation">
+          <div class="mock-grid">
             <div></div><div></div><div></div>
             <div></div><div></div><div></div>
             <div></div><div></div><div></div>
@@ -737,22 +320,28 @@
       <!-- ABOUT -->
       <section id="about">
         <h2>About Me</h2>
-        <div class="sub">A little bit about me and where I work from.</div>
+        <div class="sub">A little bit about me and my background.</div>
         <div class="about-grid" style="margin-top:12px">
           <div>
-            <p style="margin:0;color:var(--muted)">I'm <strong style="color:#fff">Marwa Muhammad Asal</strong>, an Android developer passionate about building apps that solve real-world problems and improve user experience. I'm studying Computer Science & Artificial Intelligence at Pharos University in Alexandria (GPA 3.71, expected graduation July 2026).</p>
+            <p style="margin:0;color:var(--muted)">I'm <strong style="color:#fff">Marwa Muhammad</strong>, an Android developer passionate about building apps that solve real-world problems. I'm currently pursuing a Bachelor's degree in Computer Science & Artificial Intelligence at Pharos University in Alexandria with a GPA of 3.7 (expected graduation 2026).</p>
 
             <div style="margin-top:18px">
               <h3 style="margin:0 0 8px">Education</h3>
               <div class="info-card">
-                <div class="info-row">
-                  <strong>Bachelor of Computer Science & Artificial Intelligence</strong>
-                  <span style="margin-left:auto" class="muted">2022 – 2026</span>
-                </div>
-                <div class="info-row">
-                  <span class="muted">Pharos University in Alexandria (PUA)</span>
-                  <span style="margin-left:auto" class="muted">GPA: 3.7</span>
-                </div>
+                <div style="font-weight:700;color:#fff">Bachelor of Computer Science & AI</div>
+                <div style="color:var(--accent);font-size:14px;margin:4px 0">Pharos University in Alexandria (PUA)</div>
+                <div class="info-row"><span class="muted">GPA</span><strong style="margin-left:auto">3.7</strong></div>
+                <div class="info-row"><span class="muted">Period</span><strong style="margin-left:auto">2022 – 2026</strong></div>
+              </div>
+            </div>
+
+            <div style="margin-top:18px">
+              <h3 style="margin:0 0 8px">Technical Highlights</h3>
+              <div class="info-card">
+                <div class="info-row"><strong>Android</strong><span style="margin-left:auto" class="muted">Kotlin • Java • Jetpack</span></div>
+                <div class="info-row"><strong>Architecture</strong><span style="margin-left:auto" class="muted">MVVM • Clean Code</span></div>
+                <div class="info-row"><strong>Data & ML</strong><span style="margin-left:auto" class="muted">Pandas • Neural Networks</span></div>
+                <div class="info-row"><strong>Tools</strong><span style="margin-left:auto" class="muted">Git/GitHub • Android Studio</span></div>
               </div>
             </div>
           </div>
@@ -767,7 +356,6 @@
                 <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
                 <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
               </div>
-              <div style="margin-top:12px" class="small muted">Open to internships & freelance in Android development.</div>
             </div>
           </div>
         </div>
@@ -776,11 +364,442 @@
       <!-- EXPERIENCE -->
       <section id="experience">
         <h2>Experience</h2>
-        <div class="sub">My professional journey and roles.</div>
+        <div class="sub">My professional and training experience.</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Coding Instructor</div>
+              <div class="exp-company">MsarTech Academy</div>
+            </div>
+            <div class="exp-date">07/2025 – Present (Remote)</div>
+          </div>
+          <ul>
+            <li>Teaching programming fundamentals to children (ages 6–12) through Scratch in an engaging and interactive way</li>
+            <li>Designing and delivering creative lesson plans that simplify coding concepts such as loops, events, and conditionals</li>
+            <li>Encouraging problem-solving, logical thinking, and teamwork through hands-on projects and games</li>
+            <li>Creating a fun and supportive learning environment that helps kids explore technology with confidence</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Android Mobile App Developer</div>
+              <div class="exp-company">DEPI Program (Software Development)</div>
+            </div>
+            <div class="exp-date">06/2025 – 12/2025 (Alexandria)</div>
+          </div>
+          <ul>
+            <li>Training under DEPI in native Android development using Kotlin, Compose, and MDC</li>
+            <li>Applied UI/UX basics, secure coding practices, Git/GitHub, and unit testing</li>
+            <li>Completed a Capstone Project showcasing end-to-end app development</li>
+          </ul>
+          <div style="margin-top:8px">
+            <strong style="color:#fff;font-size:14px">Courses:</strong>
+            <span class="muted" style="font-size:13px"> Kotlin Fundamentals, Android Compose, Android MDC, Android Security, UX/UI Basics, Git/GitHub, Unit Testing, Prompt Engineering</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div style="display:flex;align-items:end;justify-content:space-between">
+          <div>
+            <h2>Projects</h2>
+            <div class="sub">Selected work — click a card to view details.</div>
+          </div>
+          <div style="align-self:center"><a class="muted" href="https://github.com/MarwaaMuhammad" target="_blank">View all on GitHub →</a></div>
+        </div>
+
+        <div class="projects-grid" style="margin-top:16px">
+          <div class="card" data-title="MRI Brain Tumor Recognition" data-blurb="Developed a classification model to detect and categorize brain tumors into 4 types using MRI images." data-features='["Applied machine learning techniques for preprocessing and feature extraction","Evaluated model performance with accuracy and validation metrics","Focused on leveraging AI for healthcare applications to support early diagnosis"]' data-stack='["Python","Deep Learning","NumPy","Pandas","ML"]' data-link="https://github.com/MarwaaMuhammad">
+            <div class="thumb">MRI Tumor Recognition</div>
+            <h3>MRI Brain Tumor Recognition</h3>
+            <p class="muted" style="margin:0">AI-powered classification model detecting 4 types of brain tumors from MRI scans.</p>
+            <div class="stack">
+              <span class="chip">Python</span><span class="chip">Deep Learning</span><span class="chip">Healthcare AI</span>
+            </div>
+          </div>
+
+          <div class="card" data-title="Climate Change Impact on Agriculture" data-blurb="Performed data analysis using Python to study the impact of climate variables on agricultural productivity." data-features='["Data cleaning and preprocessing with Pandas and NumPy","Statistical methods and visualization with Matplotlib/Seaborn","Identified patterns, correlations, and trends in climate data"]' data-stack='["Python","Pandas","NumPy","Matplotlib","Seaborn"]' data-link="https://github.com/MarwaaMuhammad">
+            <div class="thumb">Climate & Agriculture</div>
+            <h3>Climate Change Impact on Agriculture</h3>
+            <p class="muted" style="margin:0">Data analysis studying how climate variables affect crop productivity.</p>
+            <div class="stack">
+              <span class="chip">Pandas</span><span class="chip">Data Viz</span><span class="chip">Statistics</span>
+            </div>
+          </div>
+
+          <div class="card" data-title="STC Data Analysis Project" data-blurb="Conducted data analysis on public opinion data to understand perspectives toward STC." data-features='["Data cleaning, exploration, and visualization with Python","Extracted key insights and trends to support decision-making","Utilized Pandas, NumPy, and Seaborn for comprehensive analysis"]' data-stack='["Python","Pandas","NumPy","Matplotlib","Seaborn"]' data-link="https://github.com/MarwaaMuhammad">
+            <div class="thumb">STC Data Analysis</div>
+            <h3>STC Data Analysis</h3>
+            <p class="muted" style="margin:0">Public opinion analysis providing insights for strategic decision-making.</p>
+            <div class="stack">
+              <span class="chip">EDA</span><span class="chip">Insights</span><span class="chip">Reporting</span>
+            </div>
+          </div>
+
+          <div class="card" data-title="Hogwarts Mart" data-blurb="Developed a Harry Potter-themed e-commerce website for selling merchandise." data-features='["Responsive and user-friendly interfaces with HTML, CSS, JavaScript","Shopping cart and product browsing features","Thematic UI inspired by the Harry Potter universe"]' data-stack='["HTML","CSS","JavaScript","Web Design"]' data-link="https://github.com/MarwaaMuhammad">
+            <div class="thumb">Hogwarts Mart</div>
+            <h3>Hogwarts Mart</h3>
+            <p class="muted" style="margin:0">Harry Potter-themed e-commerce site with engaging UI and shopping features.</p>
+            <div class="stack">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="sub">Technologies and tools I work with.</div>
         
-        <div style="margin-top:16px">
-          <div class="experience-item">
-            <div class="experience-header">
-              <div>
-                <div class="experience-title">Coding Instructor</div>
-               
+        <h3 style="margin:18px 0 8px;font-size:16px">Android Development</h3>
+        <div class="skills-grid">
+          <div class="skill">Kotlin</div>
+          <div class="skill">Java</div>
+          <div class="skill">Android SDK</div>
+          <div class="skill">Jetpack Components</div>
+          <div class="skill">Kotlin Coroutines</div>
+          <div class="skill">MVVM</div>
+        </div>
+
+        <h3 style="margin:18px 0 8px;font-size:16px">General Development</h3>
+        <div class="skills-grid">
+          <div class="skill">OOP</div>
+          <div class="skill">Design Patterns</div>
+          <div class="skill">UI/UX Design</div>
+          <div class="skill">Git/GitHub</div>
+          <div class="skill">Problem Solving</div>
+          <div class="skill">Unit Testing</div>
+        </div>
+
+        <h3 style="margin:18px 0 8px;font-size:16px">Data & ML</h3>
+        <div class="skills-grid">
+          <div class="skill">Python</div>
+          <div class="skill">Pandas & NumPy</div>
+          <div class="skill">Machine Learning</div>
+          <div class="skill">Neural Networks</div>
+        </div>
+
+        <h3 style="margin:18px 0 8px;font-size:16px">Web Development</h3>
+        <div class="skills-grid">
+          <div class="skill">HTML & CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Flask (Python)</div>
+        </div>
+
+        <h3 style="margin:18px 0 8px;font-size:16px">Soft Skills</h3>
+        <div class="skills-grid">
+          <div class="skill">Problem Solving</div>
+          <div class="skill">Team Collaboration</div>
+          <div class="skill">Time Management</div>
+          <div class="skill">Communication</div>
+          <div class="skill">Quick Learning</div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section id="certs">
+        <h2>Certificates</h2>
+        <div class="sub">Professional certifications and training completed.</div>
+        <div style="margin-top:12px" class="cert-grid">
+          <div class="cert">Android Development — DEPI</div>
+          <div class="cert">Deep Learning Course</div>
+          <div class="cert">STC Data Analyst Certification</div>
+          <div class="cert">ACPC Problem Solving Certificate</div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="sub">Send me a message — I'll reply as soon as possible.</div>
+
+        <form id="contactForm" onsubmit="return false" style="margin-top:12px">
+          <div>
+            <div class="field">
+              <label class="small muted">Full name</label>
+              <input id="name" placeholder="Your name" required />
+            </div>
+            <div class="field" style="margin-top:10px">
+              <label class="small muted">Email</label>
+              <input id="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field" style="margin-top:10px">
+              <label class="small muted">Subject</label>
+              <input id="subject" placeholder="Subject (e.g. Internship inquiry)" />
+            </div>
+            <div class="field" style="margin-top:10px">
+              <label class="small muted">Message</label>
+              <textarea id="message" rows="6" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <div style="margin-top:12px">
+              <button class="send" id="sendBtn" type="submit">Send Message</button>
+              <div id="formMsg" class="small muted" style="margin-top:8px"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="info-card">
+              <h3 style="margin:0">Contact Info</h3>
+              <div style="margin-top:8px;color:var(--muted)">Email</div>
+              <a href="mailto:marwa.mohamed.asal@gmail.com" style="color:#fff;display:block;margin-top:6px">marwa.mohamed.asal@gmail.com</a>
+
+              <div style="margin-top:12px;color:var(--muted)">Phone</div>
+              <div style="color:#fff;margin-top:6px">+201097052325</div>
+
+              <div style="margin-top:12px;color:var(--muted)">Location</div>
+              <div style="color:#fff;margin-top:6px">Alexandria, Egypt</div>
+
+              <div style="margin-top:12px;display:flex;gap:8px">
+                <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
+                <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Marwa Muhammad — Built with ❤️
+      </footer>
+    </main>
+  </div>
+
+  <button class="top-btn" id="topBtn" title="Back to top">↑</button>
+
+  <!-- Modal -->
+  <div id="modalRoot" aria-hidden="true" style="display:none"></div>
+
+  <script>
+    /* Download CV functionality */
+    document.getElementById('downloadCV').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const cvData = `
+MARWA MUHAMMAD
+Android Developer
+marwa.mohamed.asal@gmail.com | +201097052325 | Alexandria, Egypt
+GitHub: https://github.com/MarwaaMuhammad
+LinkedIn: https://www.linkedin.com/in/marwa-muhammad-8b4830289/
+
+OBJECTIVE
+Motivated Android developer skilled in Kotlin and Java, pursuing a degree in Computer Science & AI. 
+Seeking opportunities to contribute to impactful projects and grow through real-world experience.
+
+EDUCATION
+Bachelor of Computer Science & Artificial Intelligence
+Pharos University in Alexandria (PUA) | GPA: 3.7 | 2022 – 2026
+
+EXPERIENCE
+
+Coding Instructor | MsarTech Academy | 07/2025 – Present (Remote)
+• Teaching programming fundamentals to children (ages 6–12) through Scratch
+• Designing creative lesson plans that simplify coding concepts
+• Encouraging problem-solving, logical thinking, and teamwork through hands-on projects
+• Creating a fun and supportive learning environment
+
+Android Mobile App Developer | DEPI Program | 06/2025 – 12/2025 (Alexandria)
+• Training in native Android development using Kotlin, Compose, and MDC
+• Applied UI/UX basics, secure coding, Git/GitHub, and unit testing
+• Completed Capstone Project showcasing end-to-end app development
+
+TECHNICAL SKILLS
+• Android: Java, Kotlin, Android SDK, Jetpack Components, Kotlin Coroutines
+• Architecture: Clean Code, OOP, Design Patterns, MVVM
+• Data & ML: Python, Pandas, NumPy, Machine Learning, Neural Networks
+• Web: HTML, CSS, JavaScript, Flask
+• Tools: Git/GitHub, Android Studio
+
+PROJECTS
+
+MRI Brain Tumor Recognition (2024)
+• Developed classification model detecting 4 types of brain tumors from MRI images
+• Applied machine learning for preprocessing and feature extraction
+• Evaluated performance with accuracy metrics
+
+Climate Change Impact on Agriculture (2024)
+• Analyzed climate variables' impact on agricultural productivity using Python
+• Applied statistical methods and visualization techniques
+
+STC Data Analysis Project (2024)
+• Conducted public opinion data analysis
+• Extracted key insights for strategic decision-making
+
+Hogwarts Mart (2025)
+• Developed Harry Potter-themed e-commerce website
+• Implemented responsive UI with shopping cart features
+
+CERTIFICATES
+• Android Development Certificate – DEPI
+• Deep Learning Course Certificate
+• STC Data Analyst Certification
+• ACPC Problem Solving Certificate
+      `;
+      
+      const blob = new Blob([cvData], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Marwa_Muhammad_CV.txt';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    });
+
+    /* Smooth scroll to portfolio */
+    document.querySelector('a[href="#portfolio"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    /* Typed effect */
+    const phrases = [
+      "Android Developer • Kotlin & Java",
+      "Building impactful mobile experiences",
+      "Mobile dev • MVVM • Jetpack • Clean Code"
+    ];
+    let tIndex=0, charIndex=0, typing=true;
+    const typedEl=document.getElementById('typed');
+    (function typeLoop(){
+      const current = phrases[tIndex];
+      if(typing){
+        charIndex++;
+        typedEl.textContent = current.slice(0,charIndex);
+        if(charIndex === current.length){ typing=false; setTimeout(typeLoop,1200); return; }
+        setTimeout(typeLoop,40);
+      } else {
+        charIndex--;
+        typedEl.textContent = current.slice(0,charIndex);
+        if(charIndex===0){ typing=true; tIndex=(tIndex+1)%phrases.length; setTimeout(typeLoop,200); return; }
+        setTimeout(typeLoop,20);
+      }
+    })();
+
+    /* Nav active on scroll */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(navLinks).map(a=>document.querySelector(a.getAttribute('href')));
+    function onScroll(){
+      const y = window.scrollY + 140;
+      let currentIndex = 0;
+      sections.forEach((s,i)=>{ if(s && s.offsetTop <= y) currentIndex = i; });
+      navLinks.forEach((a,i)=>a.classList.toggle('active', i===currentIndex));
+      document.getElementById('topBtn').classList.toggle('show', window.scrollY > 500);
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    navLinks.forEach(a=>{
+      a.addEventListener('click', e=>{
+        navLinks.forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+      })
+    });
+
+    /* Project modal */
+    const cards = document.querySelectorAll('.card');
+    const modalRoot = document.getElementById('modalRoot');
+
+    function openModal(data){
+      modalRoot.innerHTML = '';
+      const backdrop = document.createElement('div');
+      backdrop.className = 'modal-backdrop';
+      backdrop.innerHTML = `
+        <div class="modal" role="dialog" aria-modal="true">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>${data.title}</h3>
+            <button id="closeModal" style="background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer;font-size:24px">✕</button>
+          </div>
+          <div style="margin-top:12px">
+            <p style="color:var(--muted)">${data.blurb}</p>
+            <h4 style="margin-top:16px;color:#fff">Key features</h4>
+            <ul style="color:var(--muted);margin-top:8px"></ul>
+            <div style="margin-top:12px;color:var(--muted);font-size:13px">Tech stack</div>
+            <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px" id="stackContainer"></div>
+            <div style="margin-top:16px">
+              <a href="${data.link}" target="_blank" style="color:var(--accent)">View on GitHub →</a>
+            </div>
+          </div>
+        </div>
+      `;
+      modalRoot.appendChild(backdrop);
+      modalRoot.style.display = 'block';
+      
+      const ul = backdrop.querySelector('ul');
+      data.features.forEach(f=>{
+        const li = document.createElement('li'); 
+        li.style.margin='8px 0'; 
+        li.textContent = f; 
+        ul.appendChild(li);
+      });
+      
+      const stackC = backdrop.querySelector('#stackContainer');
+      data.stack.forEach(s=>{
+        const sp = document.createElement('span'); 
+        sp.className = 'chip'; 
+        sp.style.marginRight='8px'; 
+        sp.textContent = s; 
+        stackC.appendChild(sp);
+      });
+      
+      backdrop.querySelector('#closeModal').addEventListener('click', closeModal);
+      backdrop.addEventListener('click', (ev)=>{ if(ev.target === backdrop) closeModal(); });
+      document.addEventListener('keydown', escClose);
+      
+      function escClose(e){ if(e.key === 'Escape') closeModal(); }
+      function closeModal(){
+        modalRoot.style.display = 'none';
+        modalRoot.innerHTML = '';
+        document.removeEventListener('keydown', escClose);
+      }
+    }
+
+    cards.forEach(c=>{
+      c.addEventListener('click', ()=> {
+        const data = {
+          title: c.dataset.title,
+          blurb: c.dataset.blurb,
+          features: JSON.parse(c.dataset.features),
+          stack: JSON.parse(c.dataset.stack),
+          link: c.dataset.link
+        };
+        openModal(data);
+      });
+    });
+
+    /* Contact form */
+    const form = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const formMsg = document.getElementById('formMsg');
+
+    sendBtn.addEventListener('click', ()=>{
+      formMsg.textContent = '';
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim() || 'Portfolio message';
+      const msg = document.getElementById('message').value.trim();
+      
+      if(name.length < 2){ formMsg.textContent = 'Please enter your full name.'; return; }
+      const emailRe = /^[^@]+@[^@]+\.[^@]+$/;
+      if(!emailRe.test(email)){ formMsg.textContent = 'Please enter a valid email address.'; return; }
+      if(msg.length < 12){ formMsg.textContent = 'Message should be at least 12 characters.'; return; }
+
+      const mailto = `mailto:marwa.mohamed.asal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + msg)}`;
+      window.location.href = mailto;
+      formMsg.style.color = 'var(--accent)';
+      formMsg.textContent = 'Opening your email client...';
+    });
+
+    /* Back to top */
+    document.getElementById('topBtn').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    /* Current year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
