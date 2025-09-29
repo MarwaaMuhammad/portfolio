@@ -1,553 +1,375 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Marwa Muhammad Asal — Android Developer</title>
-  <meta name="description" content="Portfolio of Marwa Muhammad Asal — Android developer (Kotlin & Java)."/>
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#0f1722;
-      --muted:#9aa6b2;
-      --accent:#14b8a6; /* teal */
-      --accent-2:#7c3aed; /* purple */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.06);
-      --max-width:1100px;
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(20,184,166,0.06), transparent 6%),
-                  radial-gradient(900px 400px at 90% 20%, rgba(124,58,237,0.05), transparent 6%),
-                  var(--bg);
-      color:#e6eef4;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      scroll-behavior:smooth;
-      padding-bottom:80px;
-    }
+import React from "react";
+import { MotionConfig, motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Download, ArrowRightCircle, Smartphone, Shield, Cpu, Database, Wrench, BadgeCheck } from "lucide-react";
 
-    /* container */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;}
+// Tip: Replace links/screenshots later with your real ones.
 
-    /* NAV */
-    header{
-      position:sticky;top:12px;z-index:40;backdrop-filter:blur(6px);
-      background: linear-gradient(180deg, rgba(10,14,20,0.55), rgba(10,14,20,0.32));
-      border:1px solid var(--border);
-      border-radius:14px;
-      margin:8px auto 22px;
-      max-width:calc(var(--max-width) + 56px);
-      padding:10px 22px;
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;}
-    .brand{display:flex;align-items:center;gap:14px;font-weight:700}
-    .brand .dot{width:10px;height:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:50%}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;font-size:14px}
-    nav a:hover{color:#fff;background:var(--glass)}
-    nav a.active{color:var(--accent);background:linear-gradient(90deg, rgba(20,184,166,0.06), rgba(124,58,237,0.04));border:1px solid rgba(124,58,237,0.06)}
+const projects = [
+  {
+    title: "MRI Brain Tumor Recognition",
+    blurb:
+      "Classifies brain tumors into 4 categories using medical imaging and machine learning techniques.",
+    features: [
+      "Image preprocessing & augmentation",
+      "CNN-based classification pipeline",
+      "Evaluation with accuracy/F1"
+    ],
+    stack: ["Python", "Deep Learning", "NumPy", "Pandas"],
+    links: [
+      { label: "GitHub Repo", href: "https://github.com/MarwaaMuhammad" },
+    ],
+    image:
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%2314b8a6'/>\
+            <stop offset='100%' stop-color='%237c3aed'/>\
+          </linearGradient>\
+        </defs>\
+        <rect width='100%' height='100%' fill='url(%23g)'/>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='36' fill='white'>MRI Tumor Recognition</text>\
+      </svg>",
+  },
+  {
+    title: "Climate Change Impact on Agriculture",
+    blurb:
+      "Data analysis project studying how climate variables affect agricultural productivity.",
+    features: [
+      "Feature engineering on climate metrics",
+      "Visualization dashboards",
+      "Regression & error analysis"
+    ],
+    stack: ["Python", "Pandas", "Matplotlib"],
+    links: [
+      { label: "GitHub Repo", href: "https://github.com/MarwaaMuhammad" },
+    ],
+    image:
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%2314b8a6'/>\
+            <stop offset='100%' stop-color='%237c3aed'/>\
+          </linearGradient>\
+        </defs>\
+        <rect width='100%' height='100%' fill='url(%23g)'/>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='36' fill='white'>Climate & Agriculture</text>\
+      </svg>",
+  },
+  {
+    title: "STC Data Analysis",
+    blurb:
+      "Explored public opinions and perspectives using data cleaning, EDA and reporting.",
+    features: [
+      "Sentiment exploration",
+      "Clean visual insights",
+      "Reproducible notebook"
+    ],
+    stack: ["Python", "Pandas", "Jupyter"],
+    links: [
+      { label: "GitHub Repo", href: "https://github.com/MarwaaMuhammad" },
+    ],
+    image:
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%2314b8a6'/>\
+            <stop offset='100%' stop-color='%237c3aed'/>\
+          </linearGradient>\
+        </defs>\
+        <rect width='100%' height='100%' fill='url(%23g)'/>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='36' fill='white'>STC Data Analysis</text>\
+      </svg>",
+  },
+  {
+    title: "Hogwarts Mart — E‑Commerce Web App",
+    blurb:
+      "Harry Potter–themed store implementing front‑end technologies and clean UX flows.",
+    features: [
+      "Product listing & cart",
+      "Checkout flow mock",
+      "Responsive UI"
+    ],
+    stack: ["HTML", "CSS", "JavaScript"],
+    links: [
+      { label: "GitHub Repo", href: "https://github.com/MarwaaMuhammad" },
+    ],
+    image:
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%2314b8a6'/>\
+            <stop offset='100%' stop-color='%237c3aed'/>\
+          </linearGradient>\
+        </defs>\
+        <rect width='100%' height='100%' fill='url(%23g)'/>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='36' fill='white'>Hogwarts Mart</text>\
+      </svg>",
+  },
+  // Android slot — add your Android app(s) here easily later
+  {
+    title: "🏋️ Workout Tracker (Android)",
+    blurb:
+      "Track workouts, sets, and progress. Built with modern Android tooling and clean architecture.",
+    features: ["Firebase Auth", "Room local DB", "Retrofit API", "Charts with MPAndroidChart"],
+    stack: ["Kotlin", "MVVM", "Jetpack", "Compose or XML"],
+    links: [
+      { label: "GitHub Repo (add soon)", href: "#" },
+    ],
+    image:
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%2314b8a6'/>\
+            <stop offset='100%' stop-color='%237c3aed'/>\
+          </linearGradient>\
+        </defs>\
+        <rect width='100%' height='100%' fill='url(%23g)'/>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='36' fill='white'>Workout Tracker (Android)</text>\
+      </svg>",
+  },
+];
 
-    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;padding:8px 12px;border-radius:12px;font-weight:700;text-decoration:none}
-    .cta:hover{opacity:0.95}
+const skills = [
+  { group: "Languages", items: ["Kotlin", "Java (OOP)", "Python (advanced)", "HTML", "CSS", "JavaScript"] },
+  { group: "Mobile", items: ["Android SDK", "Android Studio", "Jetpack Components"] },
+  { group: "Databases", items: ["SQL", "NoSQL"] },
+  { group: "Concepts", items: ["OOP", "UI/UX", "MVVM", "Design Patterns", "Machine Learning", "Neural Networks"] },
+  { group: "Tools", items: ["Git & GitHub", "Figma", "VS Code"] },
+];
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:12px}
-    .hero-left h1{font-size:34px;margin:0 0 10px;line-height:1.02}
-    .type{color:var(--accent);font-weight:700}
-    .hero-left p{color:var(--muted);margin:0 0 16px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--glass);border:1px solid var(--border);padding:10px 14px;border-radius:12px;color:#e6eef4;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
-    .btn:hover{transform:translateY(-4px);transition:all .18s ease}
-    /* small mock phone box */
-    .mock{
-      border-radius:20px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--border);height:100%;display:flex;align-items:center;justify-content:center;min-height:360px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    }
-    .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:80%;height:74%;opacity:0.95}
-    .mock-grid > div{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+const certificates = [
+  "Android Development — DEPI",
+  "ACPC Problem Solving",
+  "STC Data Analyst",
+  "Deep Learning Course",
+];
 
-    /* sections */
-    section{margin-top:38px;padding:24px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid var(--border)}
-    h2{margin:0 0 12px;font-size:20px}
-    .sub{color:var(--muted);font-size:15px;margin-bottom:8px}
+const contact = {
+  location: "Alexandria, Egypt",
+  phone: "01097052325",
+  email: "marwa.mohamed.asal@gmail.com",
+  linkedin: "https://www.linkedin.com/in/marwa-muhammad-8b4830289/",
+  github: "https://github.com/MarwaaMuhammad",
+};
 
-    /* About */
-    .about-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-    .info-card{padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
-    .info-row{display:flex;align-items:center;gap:10px;margin:10px 0;color:var(--muted);font-size:14px}
-
-    /* Projects */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--border);padding:14px;border-radius:12px;overflow:hidden;position:relative;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .18s ease;
-      cursor: pointer;
-    }
-    .card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(2,6,23,0.6);border-color: rgba(124,58,237,0.12)}
-    .card .thumb{height:140px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021018}
-    .card h3{margin:12px 0 6px}
-    .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-    .chip{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
-
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:80;padding:20px}
-    .modal{width:100%;max-width:880px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--muted)}
-    .modal h3{color:#fff}
-    .modal .modal-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
-    .modal .screenshot{border-radius:10px;height:260px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#021018;font-weight:800}
-
-    /* skills */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-    .skill{background:var(--card);padding:10px;border-radius:10px;border:1px solid var(--border);text-align:center;color:var(--muted);font-weight:600}
-
-    /* certificates */
-    .cert-grid{display:flex;flex-wrap:wrap;gap:10px}
-    .cert{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);font-size:13px;color:var(--muted)}
-
-    /* contact */
-    form{display:grid;grid-template-columns:1fr 320px;gap:14px}
-    .field{display:flex;flex-direction:column;gap:6px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;color:#e6eef4;outline:none}
-    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 4px 20px rgba(20,184,166,0.06)}
-    .small{font-size:13px;color:var(--muted)}
-    .send{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;border:none;padding:10px;border-radius:10px;font-weight:700;cursor:pointer}
-    .send:active{transform:translateY(1px)}
-
-    /* footer */
-    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center}
-
-    /* back to top */
-    .top-btn{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:12px;padding:12px;color:#07101a;display:none;z-index:30;box-shadow:0 12px 30px rgba(2,6,23,0.6)}
-    .top-btn.show{display:block}
-
-    /* responsive */
-    @media (max-width:1000px){ .hero{grid-template-columns:1fr} .about-grid{grid-template-columns:1fr} .modal .modal-grid{grid-template-columns:1fr} form{grid-template-columns:1fr} }
-    @media (max-width:640px){
-      .nav a{display:none}
-      header{padding:8px 12px}
-      .brand{gap:8px}
-      .wrap{padding:18px}
-      .hero-left h1{font-size:26px}
-      .mock{min-height:220px}
-    }
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    a.social{color:var(--muted);text-decoration:none;border-radius:8px;padding:8px}
-    a.social:hover{color:#fff;background:var(--glass)}
-
-    /* typing caret */
-    .typed { border-right: 2px solid rgba(255,255,255,0.12); padding-right:6px; white-space:nowrap; overflow:hidden; display:inline-block;}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="dot"></div>
-        <div>
-          Marwa <span style="color:var(--muted);font-weight:600">Asal</span>
-        </div>
-      </div>
-
-      <nav>
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#certs" class="nav-link">Certificates</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-
-      <a class="cta" href="#contact">Hire Me</a>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="hero-left">
-        <h1>Android Developer <span class="type">Portfolio</span></h1>
-        <div style="margin:6px 0">
-          <div class="sub">Motivated and detail-oriented Android developer with hands-on experience in Kotlin & Java. B.Sc. in Computer Science & AI — Pharos University (GPA 3.71, expected 2026).</div>
-        </div>
-        <p style="margin:12px 0" class="muted">
-          <span id="typed" class="typed"></span>
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="mock" aria-hidden="true">
-        <div class="mock-grid" role="presentation">
-          <div></div><div></div><div></div>
-          <div></div><div></div><div></div>
-          <div></div><div></div><div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="sub">A little bit about me and where I work from.</div>
-      <div class="about-grid" style="margin-top:12px">
-        <div>
-          <p style="margin:0;color:var(--muted)">I’m <strong style="color:#fff">Marwa Muhammad Asal</strong>, an Android developer passionate about building apps that solve real-world problems and improve user experience. I’m studying Computer Science & Artificial Intelligence at Pharos University in Alexandria (GPA 3.71, expected graduation July 2026).</p>
-
-          <div style="margin-top:18px">
-            <h3 style="margin:0 0 8px">Highlights</h3>
-            <div class="info-card">
-              <div class="info-row"><strong>Android</strong><span style="margin-left:auto" class="muted">Kotlin • Java • Jetpack</span></div>
-              <div class="info-row"><strong>Architecture</strong><span style="margin-left:auto" class="muted">MVVM • Design Patterns</span></div>
-              <div class="info-row"><strong>Data & ML</strong><span style="margin-left:auto" class="muted">Pandas • Deep Learning</span></div>
-              <div class="info-row"><strong>Tools</strong><span style="margin-left:auto" class="muted">Android Studio • Git • Figma</span></div>
+export default function AndroidPortfolio() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-teal-400/30">
+        {/* NAV */}
+        <header className="sticky top-0 z-30 backdrop-blur bg-slate-950/70 border-b border-white/10">
+          <nav className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#home" className="text-xl font-semibold tracking-tight">Marwa <span className="text-teal-400">Asal</span></a>
+            <div className="hidden sm:flex gap-6 text-sm">
+              {[
+                ["About", "#about"],
+                ["Projects", "#projects"],
+                ["Skills", "#skills"],
+                ["Certificates", "#certs"],
+                ["Contact", "#contact"],
+              ].map(([label, href]) => (
+                <a key={label} href={href} className="hover:text-teal-300 transition">{label}</a>
+              ))}
             </div>
+            <a href="#contact" className="inline-flex items-center gap-2 text-sm px-3 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-900 font-medium transition">
+              <ArrowRightCircle className="w-4 h-4" /> Hire Me
+            </a>
+          </nav>
+        </header>
+
+        {/* HERO */}
+        <section id="home" className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(45,212,191,0.20),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(124,58,237,0.20),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.18),transparent_40%)]" />
+          <div className="max-w-6xl mx-auto px-4 py-20 sm:py-28">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight">
+                  Android Developer <span className="text-teal-400">Portfolio</span>
+                </h1>
+                <p className="mt-4 text-slate-300 max-w-prose">
+                  Motivated and detail‑oriented Android developer with hands‑on experience in Kotlin & Java. Currently pursuing B.Sc. in CS & AI at Pharos University (GPA 3.71, graduating 2026).
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a href="#projects" className="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-900 font-medium inline-flex items-center gap-2 transition">
+                    <Smartphone className="w-4 h-4"/> View Projects
+                  </a>
+                  <a href={contact.github} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl border border-white/15 hover:border-white/30 transition inline-flex items-center gap-2">
+                    <Github className="w-4 h-4"/> GitHub
+                  </a>
+                  <a href={contact.linkedin} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl border border-white/15 hover:border-white/30 transition inline-flex items-center gap-2">
+                    <Linkedin className="w-4 h-4"/> LinkedIn
+                  </a>
+                </div>
+              </div>
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
+                <div className="aspect-[10/9] w-full rounded-3xl bg-gradient-to-br from-teal-500/20 via-indigo-500/20 to-purple-500/20 border border-white/10 shadow-2xl overflow-hidden">
+                  <div className="absolute inset-0 grid grid-cols-3 gap-2 p-4">
+                    {[...Array(9)].map((_, i) => (
+                      <div key={i} className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm" />
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3 shadow-xl backdrop-blur flex items-center gap-3">
+                  <BadgeCheck className="w-5 h-5 text-teal-400"/>
+                  <span className="text-sm text-slate-200">Open to internships & freelance</span>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </section>
 
-        <div>
-          <div class="info-card">
-            <h3 style="margin-top:0">Contact</h3>
-            <div class="info-row"><span class="muted">Location</span><strong style="margin-left:auto">Alexandria, Egypt</strong></div>
-            <div class="info-row"><span class="muted">Email</span><a style="margin-left:auto;color:var(--muted)" href="mailto:marwa.mohamed.asal@gmail.com">marwa.mohamed.asal@gmail.com</a></div>
-            <div class="info-row"><span class="muted">Phone</span><strong style="margin-left:auto">01097052325</strong></div>
-            <div style="margin-top:10px;display:flex;gap:8px">
-              <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-              <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-            </div>
-            <div style="margin-top:12px" class="small muted">Open to internships & freelance in Android development.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div style="display:flex;align-items:end;justify-content:space-between">
-        <div>
-          <h2>Projects</h2>
-          <div class="sub">Selected work — click a card to view details.</div>
-        </div>
-        <div style="align-self:center"><a class="muted" href="https://github.com/MarwaaMuhammad" target="_blank">View all on GitHub →</a></div>
-      </div>
-
-      <div class="projects-grid" style="margin-top:16px">
-        <!-- Card: MRI -->
-        <div class="card" data-title="MRI Brain Tumor Recognition" data-blurb="Classified brain tumors into 4 categories using medical imaging and deep learning techniques." data-features='["Image preprocessing & augmentation","CNN-based classification pipeline","Evaluation with accuracy & F1 score"]' data-stack='["Python","Deep Learning","NumPy","Pandas"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">MRI Tumor Recognition</div>
-          <h3>MRI Brain Tumor Recognition</h3>
-          <p class="muted" style="margin:0">Classifies brain tumors into 4 categories using medical imaging and ML.</p>
-          <div class="stack" aria-hidden="true">
-            <span class="chip">Python</span><span class="chip">Deep Learning</span><span class="chip">ML</span>
-          </div>
-        </div>
-
-        <!-- Card: Climate -->
-        <div class="card" data-title="Climate Change Impact on Agriculture" data-blurb="Data analysis project studying how climate variables affect agricultural productivity." data-features='["Feature engineering on climate metrics","Visualization dashboards","Regression & error analysis"]' data-stack='["Python","Pandas","Matplotlib"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">Climate & Agriculture</div>
-          <h3>Climate Change Impact on Agriculture</h3>
-          <p class="muted" style="margin:0">Analyzing climate variables and their effect on crop productivity.</p>
-          <div class="stack">
-            <span class="chip">Pandas</span><span class="chip">Data Analysis</span><span class="chip">Visualization</span>
-          </div>
-        </div>
-
-        <!-- Card: STC -->
-        <div class="card" data-title="STC Data Analysis" data-blurb="Explored public opinions and perspectives using data cleaning, EDA and reporting." data-features='["Sentiment exploration","Clean visual insights","Reproducible notebook"]' data-stack='["Python","Pandas","Jupyter"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">STC Data Analysis</div>
-          <h3>STC Data Analysis</h3>
-          <p class="muted" style="margin:0">Data cleaning, EDA and reporting for public opinion insights.</p>
-          <div class="stack">
-            <span class="chip">EDA</span><span class="chip">Sentiment</span><span class="chip">Notebooks</span>
-          </div>
-        </div>
-
-        <!-- Card: Hogwarts -->
-        <div class="card" data-title="Hogwarts Mart — E-Commerce Web App" data-blurb="Harry Potter-themed e-commerce site with front-end flow and responsive UI." data-features='["Product listing & cart","Checkout flow mock","Responsive UI"]' data-stack='["HTML","CSS","JavaScript"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">Hogwarts Mart</div>
-          <h3>Hogwarts Mart — E-Commerce Web App</h3>
-          <p class="muted" style="margin:0">Front-end store for themed merchandise with clean UX flows.</p>
-          <div class="stack">
-            <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">UX</span>
-          </div>
-        </div>
-
-        <!-- Card: Workout tracker (Android placeholder) -->
-        <div class="card" data-title="Workout Tracker (Android)" data-blurb="Track workouts, sets, and progress. Built with modern Android tooling and clean architecture." data-features='["Firebase Auth","Room local DB","Retrofit API","Charts with MPAndroidChart"]' data-stack='["Kotlin","MVVM","Jetpack"]' data-link="#">
-          <div class="thumb">Workout Tracker (Android)</div>
-          <h3>Workout Tracker (Android)</h3>
-          <p class="muted" style="margin:0">An Android app to log workouts and visualize progress (placeholder).</p>
-          <div class="stack">
-            <span class="chip">Kotlin</span><span class="chip">Jetpack</span><span class="chip">Room</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="sub">Languages, frameworks and tools I use regularly.</div>
-      <div style="margin-top:12px" class="skills-grid">
-        <div class="skill">Kotlin</div>
-        <div class="skill">Java (OOP)</div>
-        <div class="skill">Android SDK</div>
-        <div class="skill">Jetpack Components</div>
-        <div class="skill">MVVM • Design Patterns</div>
-        <div class="skill">Room • Retrofit</div>
-        <div class="skill">Python (advanced)</div>
-        <div class="skill">Pandas • NumPy</div>
-        <div class="skill">Git & GitHub</div>
-        <div class="skill">Figma</div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certs">
-      <h2>Certificates</h2>
-      <div class="sub">Some training and certificates I earned.</div>
-      <div style="margin-top:12px" class="cert-grid">
-        <div class="cert">Android Development — DEPI</div>
-        <div class="cert">ACPC Problem Solving</div>
-        <div class="cert">STC Data Analyst</div>
-        <div class="cert">Deep Learning Course</div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="sub">Send me a message — I’ll reply as soon as possible.</div>
-
-      <form id="contactForm" onsubmit="return false" style="margin-top:12px">
-        <div>
-          <div class="field">
-            <label class="small muted">Full name</label>
-            <input id="name" placeholder="Your name" required />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Email</label>
-            <input id="email" placeholder="you@example.com" required />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Subject</label>
-            <input id="subject" placeholder="Subject (e.g. Internship inquiry)" />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Message</label>
-            <textarea id="message" rows="6" placeholder="Write your message..." required></textarea>
-          </div>
-
-          <div style="margin-top:12px">
-            <button class="send" id="sendBtn" type="submit">Send Message</button>
-            <div id="formMsg" class="small muted" style="margin-top:8px"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="info-card">
-            <h3 style="margin:0">Contact Info</h3>
-            <div style="margin-top:8px;color:var(--muted)">Email</div>
-            <a href="mailto:marwa.mohamed.asal@gmail.com" style="color:#fff;display:block;margin-top:6px">marwa.mohamed.asal@gmail.com</a>
-
-            <div style="margin-top:12px;color:var(--muted)">Phone</div>
-            <div style="color:#fff;margin-top:6px">01097052325</div>
-
-            <div style="margin-top:12px;color:var(--muted)">Location</div>
-            <div style="color:#fff;margin-top:6px">Alexandria, Egypt</div>
-
-            <div style="margin-top:12px;display:flex;gap:8px">
-              <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-              <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-            </div>
-          </div>
-          <div style="margin-top:12px;color:var(--muted);font-size:13px">
-            Note: This contact form validates on the client and copies the message to your clipboard for easy pasting into an email (no backend). You can connect it to an email service later.
-          </div>
-        </div>
-      </form>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Marwa Muhammad Asal — Built with ❤️
-    </footer>
-  </main>
-
-  <button class="top-btn" id="topBtn" title="Back to top">↑ Top</button>
-
-  <!-- Modal -->
-  <div id="modalRoot" aria-hidden="true" style="display:none"></div>
-
-  <script>
-    /* ---------- typed effect ---------- */
-    const phrases = [
-      "Android Developer • Kotlin & Java",
-      "I build apps that solve real problems",
-      "Mobile dev • MVVM • Jetpack • Firebase"
-    ];
-    let tIndex=0, charIndex=0, typing=true;
-    const typedEl=document.getElementById('typed');
-    (function typeLoop(){
-      const current = phrases[tIndex];
-      if(typing){
-        charIndex++;
-        typedEl.textContent = current.slice(0,charIndex);
-        if(charIndex === current.length){ typing=false; setTimeout(typeLoop,1200); return; }
-        setTimeout(typeLoop,40);
-      } else {
-        charIndex--;
-        typedEl.textContent = current.slice(0,charIndex);
-        if(charIndex===0){ typing=true; tIndex=(tIndex+1)%phrases.length; setTimeout(typeLoop,200); return; }
-        setTimeout(typeLoop,20);
-      }
-    })();
-
-    /* ---------- nav active on scroll ---------- */
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = Array.from(navLinks).map(a=>document.querySelector(a.getAttribute('href')));
-    function onScroll(){
-      const y = window.scrollY + 140;
-      let currentIndex = 0;
-      sections.forEach((s,i)=>{ if(s && s.offsetTop <= y) currentIndex = i; });
-      navLinks.forEach((a,i)=>a.classList.toggle('active', i===currentIndex));
-      // back to top
-      document.getElementById('topBtn').classList.toggle('show', window.scrollY > 500);
-    }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-
-    /* smooth link click for header smaller screens */
-    navLinks.forEach(a=>{
-      a.addEventListener('click', e=>{
-        navLinks.forEach(x=>x.classList.remove('active'));
-        a.classList.add('active');
-      })
-    });
-
-    /* ---------- project modal ---------- */
-    const cards = document.querySelectorAll('.card');
-    const modalRoot = document.getElementById('modalRoot');
-
-    function openModal(data){
-      modalRoot.innerHTML = '';
-      const backdrop = document.createElement('div');
-      backdrop.className = 'modal-backdrop';
-      backdrop.tabIndex = 0;
-      backdrop.innerHTML = `
-        <div class="modal" role="dialog" aria-modal="true">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3>${data.title}</h3>
-            <button id="closeModal" style="background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer">✕</button>
-          </div>
-          <div class="modal-grid" style="margin-top:12px">
-            <div>
-              <p style="color:var(--muted)">${data.blurb}</p>
-              <h4 style="margin-top:12px;color:#fff">Key features</h4>
-              <ul style="color:var(--muted);margin-top:8px"></ul>
-              <div style="margin-top:12px">
-                <a href="${data.link}" target="_blank" style="color:var(--accent)">View on GitHub →</a>
+        {/* ABOUT */}
+        <section id="about" className="max-w-6xl mx-auto px-4 py-16">
+          <div className="grid lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl font-semibold">About Me</h2>
+              <p className="mt-3 text-slate-300">
+                I’m <span className="text-slate-100 font-medium">Marwa Muhammad Asal</span>, an Android developer passionate about building apps that solve real‑world problems and delight users. I’m studying Computer Science & Artificial Intelligence at Pharos University in Alexandria (GPA 3.71, expected graduation July 2026).
+              </p>
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                <InfoRow icon={<MapPin className="w-4 h-4"/>} label="Location" value={contact.location} />
+                <InfoRow icon={<Phone className="w-4 h-4"/>} label="Phone" value={contact.phone} />
+                <InfoRow icon={<Mail className="w-4 h-4"/>} label="Email" value={contact.email} />
               </div>
             </div>
-            <div>
-              <div class="screenshot">Screenshot</div>
-              <div style="margin-top:10px;color:var(--muted);font-size:13px">Tech stack</div>
-              <div style="margin-top:8px" id="stackContainer"></div>
+            <div className="lg:col-span-1">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <h3 className="font-semibold">Quick Highlights</h3>
+                <ul className="mt-3 space-y-2 text-slate-300 text-sm">
+                  <li className="flex items-start gap-2"><Shield className="w-4 h-4 mt-0.5 text-teal-400"/> Android Development Certificate — DEPI</li>
+                  <li className="flex items-start gap-2"><Cpu className="w-4 h-4 mt-0.5 text-teal-400"/> Strong in Kotlin, Java, MVVM, Jetpack</li>
+                  <li className="flex items-start gap-2"><Database className="w-4 h-4 mt-0.5 text-teal-400"/> SQL / NoSQL • Room • Retrofit</li>
+                  <li className="flex items-start gap-2"><Wrench className="w-4 h-4 mt-0.5 text-teal-400"/> Git/GitHub • Figma • Testing basics</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      `;
-      modalRoot.appendChild(backdrop);
-      modalRoot.style.display = 'block';
-      // populate features
-      const ul = backdrop.querySelector('ul');
-      data.features.forEach(f=>{
-        const li = document.createElement('li'); li.style.margin='8px 0'; li.style.color='var(--muted)'; li.textContent = f; ul.appendChild(li);
-      });
-      const stackC = backdrop.querySelector('#stackContainer');
-      data.stack.forEach(s=>{
-        const sp = document.createElement('span'); sp.className = 'chip'; sp.style.marginRight='8px'; sp.textContent = s; stackC.appendChild(sp);
-      });
-      // close handlers
-      backdrop.querySelector('#closeModal').addEventListener('click', closeModal);
-      backdrop.addEventListener('click', (ev)=>{ if(ev.target === backdrop) closeModal(); });
-      document.addEventListener('keydown', escClose);
-      function escClose(e){ if(e.key === 'Escape') closeModal(); }
-      function closeModal(){
-        modalRoot.style.display = 'none';
-        modalRoot.innerHTML = '';
-        document.removeEventListener('keydown', escClose);
-      }
-    }
+        </section>
 
-    cards.forEach(c=>{
-      c.addEventListener('click', ()=> {
-        const data = {
-          title: c.dataset.title,
-          blurb: c.dataset.blurb,
-          features: JSON.parse(c.dataset.features),
-          stack: JSON.parse(c.dataset.stack),
-          link: c.dataset.link
-        };
-        openModal(data);
-      });
-    });
+        {/* PROJECTS */}
+        <section id="projects" className="max-w-6xl mx-auto px-4 py-16">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-2xl font-semibold">Projects</h2>
+            <a href={contact.github} target="_blank" rel="noreferrer" className="text-sm text-teal-300 inline-flex items-center gap-1 hover:underline">
+              View all on GitHub <ExternalLink className="w-4 h-4"/>
+            </a>
+          </div>
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <article key={p.title} className="group rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition">
+                <div className="aspect-[16/10] bg-black/20">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover"/>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold group-hover:text-teal-300 transition">{p.title}</h3>
+                  <p className="mt-1 text-sm text-slate-300">{p.blurb}</p>
+                  <ul className="mt-3 text-xs text-slate-400 list-disc list-inside space-y-1">
+                    {p.features.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {p.stack.map((s) => (
+                      <span key={s} className="px-2 py-1 text-[11px] rounded-full bg-slate-900/60 border border-white/10">{s}</span>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {p.links.map((l) => (
+                      <a key={l.label} href={l.href} target={l.href.startsWith('#') ? undefined : "_blank"} rel="noreferrer" className="text-sm text-teal-300 hover:underline inline-flex items-center gap-1">
+                        {l.label} <ExternalLink className="w-3.5 h-3.5"/>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-    /* ---------- contact form validation & clipboard copy ---------- */
-    const form = document.getElementById('contactForm');
-    const nameI = document.getElementById('name');
-    const emailI = document.getElementById('email');
-    const subjectI = document.getElementById('subject');
-    const messageI = document.getElementById('message');
-    const sendBtn = document.getElementById('sendBtn');
-    const formMsg = document.getElementById('formMsg');
+        {/* SKILLS */}
+        <section id="skills" className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-2xl font-semibold">Skills</h2>
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {skills.map((g) => (
+              <div key={g.group} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <h3 className="font-medium">{g.group}</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {g.items.map((it) => (
+                    <span key={it} className="px-2 py-1 text-xs rounded-full bg-slate-900/60 border border-white/10">{it}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-    sendBtn.addEventListener('click', async ()=>{
-      formMsg.textContent = '';
-      const name = nameI.value.trim(), email = emailI.value.trim(), msg = messageI.value.trim();
-      if(name.length < 2){ formMsg.textContent = 'Please enter your full name.'; return; }
-      const emailRe = /^[^@]+@[^@]+\.[^@]+$/;
-      if(!emailRe.test(email)){ formMsg.textContent = 'Please enter a valid email address.'; return; }
-      if(msg.length < 12){ formMsg.textContent = 'Message should be at least 12 characters.'; return; }
+        {/* CERTIFICATES */}
+        <section id="certs" className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-2xl font-semibold">Certificates</h2>
+          <ul className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certificates.map((c) => (
+              <li key={c} className="rounded-2xl border border-white/10 bg-white/5 p-5 flex items-start gap-3">
+                <BadgeCheck className="w-5 h-5 text-teal-400 shrink-0"/>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      // Compose a message and copy to clipboard for the user (no backend)
-      const subject = subjectI.value.trim() || 'Portfolio message';
-      const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${msg}`;
-      try {
-        await navigator.clipboard.writeText(body);
-        formMsg.style.color = 'var(--muted)';
-        formMsg.textContent = 'Message validated and copied to clipboard. Paste it into your email app to send (mailto link created below).';
-        // open mailto link so user can send
-        const mailto = `mailto:marwa.mohamed.asal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        // small delay so user sees message then open mailto
-        setTimeout(()=>{ window.location.href = mailto; }, 700);
-      } catch (err){
-        formMsg.style.color = '#ffb4b4';
-        formMsg.textContent = 'Could not access clipboard — please copy manually: ' + body.slice(0,200) + '...';
-      }
-    });
+        {/* CONTACT */}
+        <section id="contact" className="max-w-6xl mx-auto px-4 py-16">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.03] p-6 sm:p-10">
+            <div className="flex items-start justify-between gap-6 flex-col sm:flex-row">
+              <div>
+                <h2 className="text-2xl font-semibold">Let’s build something great</h2>
+                <p className="mt-2 text-slate-300 max-w-prose">Open to internships, freelance, and collaborations in Android development. Reach out anytime!</p>
+                <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                  <ContactRow icon={<Mail className="w-4 h-4"/>} label="Email" value={contact.email} href={`mailto:${contact.email}`} />
+                  <ContactRow icon={<Phone className="w-4 h-4"/>} label="Phone" value={contact.phone} href={`tel:${contact.phone}`} />
+                  <ContactRow icon={<Linkedin className="w-4 h-4"/>} label="LinkedIn" value="/marwa-muhammad-8b4830289" href={contact.linkedin} />
+                  <ContactRow icon={<Github className="w-4 h-4"/>} label="GitHub" value="/MarwaaMuhammad" href={contact.github} />
+                </div>
+              </div>
+              <a href="#projects" className="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-900 font-medium transition">
+                <ArrowRightCircle className="w-4 h-4"/> See Projects
+              </a>
+            </div>
+          </div>
+        </section>
 
-    /* ---------- back to top ---------- */
-    document.getElementById('topBtn').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+        {/* FOOTER */}
+        <footer className="border-t border-white/10">
+          <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-400 flex items-center justify-between">
+            <p>© {new Date().getFullYear()} Marwa Muhammad Asal. All rights reserved.</p>
+            <a href="#home" className="hover:text-teal-300">Back to top ↑</a>
+          </div>
+        </footer>
+      </div>
+    </MotionConfig>
+  );
+}
 
-    /* current year */
-    document.getElementById('year').textContent = new Date().getFullYear();
+function InfoRow({ icon, label, value }) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+      <div className="text-xs text-slate-400">{label}</div>
+      <div className="mt-1 flex items-center gap-2">
+        <span className="text-slate-200">{value}</span>
+      </div>
+    </div>
+  );
+}
 
-    /* accessibility: focus outline */
-    document.addEventListener('keydown', e => {
-      if(e.key === 'Tab') document.body.classList.add('show-focus');
-    });
-  </script>
-</body>
-</html>
+function ContactRow({ icon, label, value, href }) {
+  return (
+    <a href={href} target={href?.startsWith('#') ? undefined : "_blank"} rel="noreferrer" className="group rounded-xl border border-white/10 bg-white/5 p-4 hover:border-white/20 transition">
+      <div className="text-xs text-slate-400 flex items-center gap-2">{icon}<span>{label}</span></div>
+      <div className="mt-1 text-slate-200 inline-flex items-center gap-2">{value} <ExternalLink className="w-3.5 h-3.5 opacity-80 group-hover:opacity-100"/></div>
+    </a>
+  );
+}
