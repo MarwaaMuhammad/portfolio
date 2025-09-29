@@ -1,606 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marwa Muhammad - Android Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --dark: #1a1d1a;
-            --slate: #4a4f4a;
-            --sage: #7d8f7d;
-            --cream: #e8dcc4;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--cream);
-            background-color: var(--dark);
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--dark);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--cream);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--cream);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--sage);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--slate) 100%);
-            color: var(--cream);
-            padding: 8rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            color: var(--sage);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--sage);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: var(--cream);
-            color: var(--dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 4rem 2rem;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: var(--cream);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--slate);
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .skill-category {
-            background-color: var(--slate);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .skill-category h3 {
-            color: var(--cream);
-            margin-bottom: 1rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background-color: var(--sage);
-            color: var(--white);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* Experience & Projects */
-        .experience {
-            background-color: var(--dark);
-        }
-
-        .timeline {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            background-color: var(--slate);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--sage);
-            transition: transform 0.3s;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .timeline-item h3 {
-            color: var(--cream);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .date {
-            color: var(--sage);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item ul {
-            margin-left: 1.5rem;
-        }
-
-        .timeline-item li {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-links {
-            margin-top: 1rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            color: var(--sage);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .project-links a:hover {
-            color: var(--cream);
-        }
-
-        /* Education */
-        .education-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-item {
-            background-color: var(--slate);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .education-item h3 {
-            color: var(--cream);
-            margin-bottom: 0.3rem;
-        }
-
-        .education-item .year {
-            color: var(--sage);
-            font-weight: bold;
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--slate);
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact input,
-        .contact textarea {
-            padding: 1rem;
-            border: 2px solid var(--sage);
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            background-color: var(--dark);
-            color: var(--cream);
-        }
-
-        .contact textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--cream);
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--sage);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--cream);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer a {
-            color: var(--cream);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--sage);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marwa Muhammad Asal — Android Developer</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1722;
+      --muted:#9aa6b2;
+      --accent:#14b8a6;
+      --accent-2:#7c3aed;
+      --border:rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, Arial, sans-serif;
+      background:var(--bg);
+      color:#e6eef4;
+      scroll-behavior:smooth;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px;}
+    header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,0.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;}
+    nav a{color:var(--muted);margin:0 8px;text-decoration:none}
+    nav a.active,nav a:hover{color:var(--accent)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 14px;border-radius:8px;color:#000;text-decoration:none;font-weight:bold}
+    section{margin:40px 0;padding:20px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid var(--border);}
+    h2{margin:0 0 12px}
+    .hero{display:grid;grid-template-columns:1fr 350px;gap:20px;align-items:center}
+    .typed{border-right:2px solid var(--accent);padding-right:6px}
+    .thumb img{width:100%;height:140px;object-fit:cover;border-radius:10px}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid var(--border);padding:12px;border-radius:10px;cursor:pointer;transition:.2s}
+    .card:hover{transform:translateY(-5px);border-color:var(--accent)}
+    .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .chip{background:rgba(255,255,255,0.05);padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+    .skill{background:var(--card);padding:10px;border-radius:8px;text-align:center;color:var(--muted)}
+    .cert-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .cert{background:var(--card);padding:6px 12px;border-radius:999px;font-size:13px;color:var(--muted)}
+    form{display:grid;gap:12px}
+    input,textarea{background:transparent;border:1px solid var(--border);padding:8px;border-radius:6px;color:#fff}
+    .send{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+    footer{text-align:center;color:var(--muted);padding:20px}
+    .top-btn{position:fixed;right:20px;bottom:20px;display:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px;border-radius:50%;cursor:pointer}
+    .top-btn.show{display:block}
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
+    .modal{background:var(--card);padding:20px;border-radius:10px;max-width:600px;width:90%}
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">Marwa Muhammad</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <header>
+    <div class="nav">
+      <div><strong>Marwa</strong> Asal</div>
+      <nav>
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#certs" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <a class="cta" href="#contact">Hire Me</a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
+  <main class="wrap">
+    <!-- HERO -->
     <section id="home" class="hero">
-        <h1>Marwa Muhammad</h1>
-        <h2>Android Developer</h2>
-        <p>Motivated Android developer skilled in Kotlin and Java, pursuing a degree in Computer Science & AI.</p>
-        <a href="#contact" class="btn">Get In Touch</a>
+      <div>
+        <h1>Android Developer <span class="typed" id="typed"></span></h1>
+        <p>Motivated and detail-oriented Android developer with Kotlin & Java. Currently pursuing B.Sc. in Computer Science & AI.</p>
+        <a class="cta" href="#projects">View Projects</a>
+      </div>
+      <div><img src="images/workout.png" alt="Hero preview" style="width:100%;border-radius:10px"></div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Marwa, an Android developer from Alexandria, Egypt, currently pursuing my Bachelor's degree in Computer Science & Artificial Intelligence at Pharos University with a GPA of 3.7.</p>
-                    <p>I'm passionate about creating impactful mobile applications and exploring the intersection of technology and education. Currently, I'm working as a Coding Instructor at MsarTech Academy, where I teach programming fundamentals to children through Scratch, and I'm also completing advanced training through the DEPI program in native Android development.</p>
-                    <p>I love building projects that combine my technical skills with creative problem-solving, whether it's developing Android apps, analyzing data, or creating engaging web experiences.</p>
-                </div>
-            </div>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I was a <strong>data analyst</strong>, working with numbers and patterns, but deep down I knew it wasn’t where my passion lived.
+      The trigger came when I started exploring app development — the idea of building something people could interact with excited me.
+      I took action by learning iOS development, but a major challenge hit: without a MacBook, I couldn’t fully pursue it.</p>
+      <p>Instead of giving up, I kept looking for another door. That’s when someone introduced me to the <strong>Android track</strong> — and it felt like everything clicked.
+      I dove in, learned the tools, built projects, and found the perfect mix of creativity and problem-solving.</p>
+      <p>Now, I’m an <strong>Android developer</strong> who knows the value of adaptability, persistence, and turning challenges into stepping stones.
+      My journey taught me that the right path isn’t always the first one you choose, but the one that makes you feel alive when you walk it.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="card" data-title="MRI Brain Tumor Recognition" data-blurb="Classified brain tumors into 4 categories using medical imaging." data-stack='["Python","Deep Learning","Pandas"]'>
+          <div class="thumb"><img src="images/mri.png" alt="MRI project"></div>
+          <h3>MRI Brain Tumor Recognition</h3>
         </div>
+        <div class="card" data-title="Climate Change Impact" data-blurb="Analyzed how climate variables affect agricultural productivity." data-stack='["Python","Pandas","Matplotlib"]'>
+          <div class="thumb"><img src="images/climate.png" alt="Climate project"></div>
+          <h3>Climate Change Impact</h3>
+        </div>
+        <div class="card" data-title="STC Data Analysis" data-blurb="Explored public opinions with data cleaning & EDA." data-stack='["Python","Jupyter","EDA"]'>
+          <div class="thumb"><img src="images/stc.png" alt="STC project"></div>
+          <h3>STC Data Analysis</h3>
+        </div>
+        <div class="card" data-title="Hogwarts Mart" data-blurb="Harry Potter-themed e-commerce site." data-stack='["HTML","CSS","JavaScript"]'>
+          <div class="thumb"><img src="images/hogwarts.png" alt="Hogwarts project"></div>
+          <h3>Hogwarts Mart</h3>
+        </div>
+        <div class="card" data-title="Workout Tracker" data-blurb="Android app to track workouts & progress." data-stack='["Kotlin","MVVM","Room"]'>
+          <div class="thumb"><img src="images/workout.png" alt="Workout Tracker"></div>
+          <h3>Workout Tracker</h3>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- SKILLS -->
     <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Android Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Kotlin</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Android SDK</span>
-                        <span class="skill-tag">Jetpack</span>
-                        <span class="skill-tag">Compose</span>
-                        <span class="skill-tag">Coroutines</span>
-                        <span class="skill-tag">MVVM</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Flask</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>General</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">OOP</span>
-                        <span class="skill-tag">Design Patterns</span>
-                        <span class="skill-tag">UI/UX Design</span>
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Problem Solving</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">Kotlin</div>
+        <div class="skill">Java</div>
+        <div class="skill">Android SDK</div>
+        <div class="skill">Jetpack</div>
+        <div class="skill">MVVM</div>
+        <div class="skill">Room</div>
+        <div class="skill">Retrofit</div>
+        <div class="skill">Python</div>
+        <div class="skill">Pandas</div>
+        <div class="skill">GitHub</div>
+      </div>
     </section>
 
-    <!-- Experience & Projects -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2>Experience & Projects</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Coding Instructor</h3>
-                    <div class="date">MsarTech Academy | July 2025 - Present</div>
-                    <ul>
-                        <li>Teaching programming fundamentals to children (ages 6–12) through Scratch</li>
-                        <li>Designing creative lesson plans that simplify coding concepts</li>
-                        <li>Creating a fun and supportive learning environment</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Android Mobile App Developer</h3>
-                    <div class="date">DEPI Program | June 2025 - December 2025</div>
-                    <ul>
-                        <li>Training in native Android development using Kotlin, Compose, and MDC</li>
-                        <li>Applied UI/UX basics, secure coding, Git/GitHub, and unit testing</li>
-                        <li>Completed Capstone Project showcasing end-to-end app development</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Hogwarts Mart</h3>
-                    <div class="date">2025</div>
-                    <p>Harry Potter–themed e-commerce website with responsive design, shopping cart functionality, and engaging thematic UI.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/marwa-mohamed-asal/Hogwarts-Mart" target="_blank">🔗 GitHub</a>
-                        <a href="#" target="_blank">🌐 Live Demo</a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>MRI Brain Tumor Recognition</h3>
-                    <div class="date">2024</div>
-                    <p>Classification model to detect and categorize brain tumors into 4 types using MRI images. Leveraged AI for healthcare applications to support early diagnosis.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/marwa-mohamed-asal/MRI-Brain-Tumor" target="_blank">🔗 GitHub</a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Climate Change Impact on Agriculture</h3>
-                    <div class="date">2024</div>
-                    <p>Data analysis using Python to study the impact of climate variables on agricultural productivity with statistical methods and visualization.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/marwa-mohamed-asal/Climate-Agriculture" target="_blank">🔗 GitHub</a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>STC Data Analysis Project</h3>
-                    <div class="date">2024</div>
-                    <p>Conducted data analysis on public opinion data using Python for data cleaning, exploration, and visualization to extract key insights.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/marwa-mohamed-asal/STC-Analysis" target="_blank">🔗 GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- CERTIFICATES -->
+    <section id="certs">
+      <h2>Certificates</h2>
+      <div class="cert-grid">
+        <div class="cert">Android Development – DEPI</div>
+        <div class="cert">ACPC Problem Solving</div>
+        <div class="cert">STC Data Analyst</div>
+        <div class="cert">Deep Learning</div>
+      </div>
     </section>
 
-    <!-- Education -->
-    <section id="education">
-        <div class="container">
-            <h2>Education & Certificates</h2>
-            <div class="education-list">
-                <div class="education-item">
-                    <div>
-                        <h3>Bachelor of Computer Science & Artificial Intelligence</h3>
-                        <p>Pharos University in Alexandria (PUA) | GPA: 3.7</p>
-                    </div>
-                    <div class="year">2022 - 2026</div>
-                </div>
-                <div class="education-item">
-                    <div>
-                        <h3>Android Development Certificate</h3>
-                        <p>DEPI</p>
-                    </div>
-                    <div class="year">2025</div>
-                </div>
-                <div class="education-item">
-                    <div>
-                        <h3>Deep Learning Course Certificate</h3>
-                    </div>
-                    <div class="year">2024</div>
-                </div>
-                <div class="education-item">
-                    <div>
-                        <h3>STC Data Analyst Certification</h3>
-                    </div>
-                    <div class="year">2024</div>
-                </div>
-                <div class="education-item">
-                    <div>
-                        <h3>ACPC Problem Solving Certificate</h3>
-                    </div>
-                    <div class="year">2024</div>
-                </div>
-            </div>
-        </div>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input id="name" placeholder="Your Name" required />
+        <input id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Message..." required></textarea>
+        <button class="send" type="submit">Send</button>
+        <p id="formMsg"></p>
+      </form>
     </section>
+  </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <form id="contactForm">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-                <div class="social-links">
-                    <a href="mailto:marwa.mohamed.asal@gmail.com" title="Email">📧</a>
-                    <a href="https://github.com/marwa-mohamed-asal" target="_blank" title="GitHub">💻</a>
-                    <a href="https://linkedin.com/in/marwa-muhammad" target="_blank" title="LinkedIn">💼</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>© <span id="year"></span> Marwa Muhammad Asal</footer>
+  <button class="top-btn" id="topBtn">↑</button>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Marwa Muhammad. All rights reserved.</p>
-        <p><a href="#home">Back to Top</a></p>
-    </footer>
+  <div id="modalRoot" style="display:none"></div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <script>
+    // typing effect
+    const phrases=["Kotlin & Java","Builds Android Apps","Problem Solver"];
+    let i=0,j=0,typing=true;
+    const typed=document.getElementById("typed");
+    (function loop(){
+      const word=phrases[i];
+      if(typing){j++;typed.textContent=word.slice(0,j);if(j===word.length){typing=false;setTimeout(loop,1200);return}}
+      else{j--;typed.textContent=word.slice(0,j);if(j===0){typing=true;i=(i+1)%phrases.length;setTimeout(loop,300);return}}
+      setTimeout(loop,typing?100:40);
+    })();
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-        });
-    </script>
+    // nav active + back to top
+    const links=document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll",()=>{
+      let pos=window.scrollY+150;
+      links.forEach(a=>{
+        let sec=document.querySelector(a.getAttribute("href"));
+        if(sec.offsetTop<=pos && sec.offsetTop+sec.offsetHeight>pos){
+          links.forEach(l=>l.classList.remove("active"));
+          a.classList.add("active");
+        }
+      });
+      document.getElementById("topBtn").classList.toggle("show",window.scrollY>500);
+    });
+    document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+    // modal
+    const cards=document.querySelectorAll(".card");
+    const modalRoot=document.getElementById("modalRoot");
+    cards.forEach(c=>{
+      c.addEventListener("click",()=>{
+        const title=c.dataset.title;
+        const blurb=c.dataset.blurb;
+        const stack=JSON.parse(c.dataset.stack);
+        modalRoot.innerHTML=`<div class="modal-backdrop"><div class="modal"><h3>${title}</h3><p>${blurb}</p><p><strong>Stack:</strong> ${stack.join(", ")}</p><button onclick="document.getElementById('modalRoot').style.display='none'">Close</button></div></div>`;
+        modalRoot.style.display="block";
+      });
+    });
+
+    // contact form
+    document.getElementById("contactForm").onsubmit=e=>{
+      e.preventDefault();
+      document.getElementById("formMsg").textContent="Message ready! Copy and send via email.";
+    };
+
+    document.getElementById("year").textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
