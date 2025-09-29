@@ -1,552 +1,606 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Marwa Muhammad Asal — Android Developer</title>
-  <meta name="description" content="Portfolio of Marwa Muhammad Asal — Android developer (Kotlin & Java)."/>
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#0f1722;
-      --muted:#9aa6b2;
-      --accent:#14b8a6; /* teal */
-      --accent-2:#7c3aed; /* purple */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.06);
-      --max-width:1100px;
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(20,184,166,0.06), transparent 6%),
-                  radial-gradient(900px 400px at 90% 20%, rgba(124,58,237,0.05), transparent 6%),
-                  var(--bg);
-      color:#e6eef4;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      scroll-behavior:smooth;
-      padding-bottom:80px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwa Muhammad - Android Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* container */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;}
+        :root {
+            --dark: #1a1d1a;
+            --slate: #4a4f4a;
+            --sage: #7d8f7d;
+            --cream: #e8dcc4;
+            --white: #ffffff;
+        }
 
-    /* NAV */
-    header{
-      position:sticky;top:12px;z-index:40;backdrop-filter:blur(6px);
-      background: linear-gradient(180deg, rgba(10,14,20,0.55), rgba(10,14,20,0.32));
-      border:1px solid var(--border);
-      border-radius:14px;
-      margin:8px auto 22px;
-      max-width:calc(var(--max-width) + 56px);
-      padding:10px 22px;
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;}
-    .brand{display:flex;align-items:center;gap:14px;font-weight:700}
-    .brand .dot{width:10px;height:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:50%}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;font-size:14px}
-    nav a:hover{color:#fff;background:var(--glass)}
-    nav a.active{color:var(--accent);background:linear-gradient(90deg, rgba(20,184,166,0.06), rgba(124,58,237,0.04));border:1px solid rgba(124,58,237,0.06)}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cream);
+            background-color: var(--dark);
+        }
 
-    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;padding:8px 12px;border-radius:12px;font-weight:700;text-decoration:none}
-    .cta:hover{opacity:0.95}
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:12px}
-    .hero-left h1{font-size:34px;margin:0 0 10px;line-height:1.02}
-    .type{color:var(--accent);font-weight:700}
-    .hero-left p{color:var(--muted);margin:0 0 16px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--glass);border:1px solid var(--border);padding:10px 14px;border-radius:12px;color:#e6eef4;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
-    .btn:hover{transform:translateY(-4px);transition:all .18s ease}
-    /* small mock phone box */
-    .mock{
-      border-radius:20px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--border);height:100%;display:flex;align-items:center;justify-content:center;min-height:360px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    }
-    .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:80%;height:74%;opacity:0.95}
-    .mock-grid > div{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* sections */
-    section{margin-top:38px;padding:24px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid var(--border)}
-    h2{margin:0 0 12px;font-size:20px}
-    .sub{color:var(--muted);font-size:15px;margin-bottom:8px}
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cream);
+        }
 
-    /* About */
-    .about-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-    .info-card{padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
-    .info-row{display:flex;align-items:center;gap:10px;margin:10px 0;color:var(--muted);font-size:14px}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
 
-    /* Projects */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--border);padding:14px;border-radius:12px;overflow:hidden;position:relative;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .18s ease;
-      cursor: pointer;
-    }
-    .card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(2,6,23,0.6);border-color: rgba(124,58,237,0.12)}
-    .card .thumb{height:140px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021018}
-    .card h3{margin:12px 0 6px}
-    .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-    .chip{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:80;padding:20px}
-    .modal{width:100%;max-width:880px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--muted)}
-    .modal h3{color:#fff}
-    .modal .modal-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
-    .modal .screenshot{border-radius:10px;height:260px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#021018;font-weight:800}
+        nav a:hover {
+            color: var(--sage);
+        }
 
-    /* skills */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-    .skill{background:var(--card);padding:10px;border-radius:10px;border:1px solid var(--border);text-align:center;color:var(--muted);font-weight:600}
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--slate) 100%);
+            color: var(--cream);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
 
-    /* certificates */
-    .cert-grid{display:flex;flex-wrap:wrap;gap:10px}
-    .cert{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border);font-size:13px;color:var(--muted)}
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
 
-    /* contact */
-    form{display:grid;grid-template-columns:1fr 320px;gap:14px}
-    .field{display:flex;flex-direction:column;gap:6px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;color:#e6eef4;outline:none}
-    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 4px 20px rgba(20,184,166,0.06)}
-    .small{font-size:13px;color:var(--muted)}
-    .send{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#07101a;border:none;padding:10px;border-radius:10px;font-weight:700;cursor:pointer}
-    .send:active{transform:translateY(1px)}
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+        }
 
-    /* footer */
-    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center}
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    /* back to top */
-    .top-btn{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:12px;padding:12px;color:#07101a;display:none;z-index:30;box-shadow:0 12px 30px rgba(2,6,23,0.6)}
-    .top-btn.show{display:block}
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--sage);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
 
-    /* responsive */
-    @media (max-width:1000px){ .hero{grid-template-columns:1fr} .about-grid{grid-template-columns:1fr} .modal .modal-grid{grid-template-columns:1fr} form{grid-template-columns:1fr} }
-    @media (max-width:640px){
-      .nav a{display:none}
-      header{padding:8px 12px}
-      .brand{gap:8px}
-      .wrap{padding:18px}
-      .hero-left h1{font-size:26px}
-      .mock{min-height:220px}
-    }
+        .btn:hover {
+            background-color: var(--cream);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 
-    /* small helpers */
-    .muted{color:var(--muted)}
-    a.social{color:var(--muted);text-decoration:none;border-radius:8px;padding:8px}
-    a.social:hover{color:#fff;background:var(--glass)}
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* typing caret */
-    .typed { border-right: 2px solid rgba(255,255,255,0.12); padding-right:6px; white-space:nowrap; overflow:hidden; display:inline-block;}
-  </style>
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--slate);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background-color: var(--slate);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .skill-category h3 {
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--sage);
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Experience & Projects */
+        .experience {
+            background-color: var(--dark);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background-color: var(--slate);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--sage);
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .timeline-item h3 {
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--sage);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-links a:hover {
+            color: var(--cream);
+        }
+
+        /* Education */
+        .education-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background-color: var(--slate);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .education-item h3 {
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .year {
+            color: var(--sage);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--slate);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 1rem;
+            border: 2px solid var(--sage);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: var(--dark);
+            color: var(--cream);
+        }
+
+        .contact textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--cream);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--sage);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--sage);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="dot"></div>
-        <div>
-          Marwa <span style="color:var(--muted);font-weight:600">Asal</span>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Marwa Muhammad</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-      </div>
+    </nav>
 
-      <nav>
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#certs" class="nav-link">Certificates</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-
-      <a class="cta" href="#contact">Hire Me</a>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- HERO -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-left">
-        <h1>Android Developer <span class="type">Portfolio</span></h1>
-        <div style="margin:6px 0">
-          <div class="sub">Motivated and detail-oriented Android developer with hands-on experience in Kotlin & Java. B.Sc. in Computer Science & AI — Pharos University (GPA 3.71, expected 2026).</div>
-        </div>
-        <p style="margin:12px 0" class="muted">
-          <span id="typed" class="typed"></span>
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="mock" aria-hidden="true">
-        <div class="mock-grid" role="presentation">
-          <div></div><div></div><div></div>
-          <div></div><div></div><div></div>
-          <div></div><div></div><div></div>
-        </div>
-      </div>
+        <h1>Marwa Muhammad</h1>
+        <h2>Android Developer</h2>
+        <p>Motivated Android developer skilled in Kotlin and Java, pursuing a degree in Computer Science & AI.</p>
+        <a href="#contact" class="btn">Get In Touch</a>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      
-      <div class="about-grid" style="margin-top:12px">
-        <div>
-          <p style="margin:0;color:var(--muted)">I’m <strong style="color:#fff">Marwa Muhammad Asal</strong>, an Android developer passionate about building apps that solve real-world problems and improve user experience. I’m studying Computer Science & Artificial Intelligence at Pharos University in Alexandria (GPA 3.71, expected graduation July 2026).</p>
-
-          <div style="margin-top:18px">
-            <h3 style="margin:0 0 8px">Highlights</h3>
-            <div class="info-card">
-              <div class="info-row"><strong>Android</strong><span style="margin-left:auto" class="muted">Kotlin • Java • Jetpack</span></div>
-              <div class="info-row"><strong>Architecture</strong><span style="margin-left:auto" class="muted">MVVM • Design Patterns</span></div>
-              <div class="info-row"><strong>Data & ML</strong><span style="margin-left:auto" class="muted">Pandas • Deep Learning</span></div>
-              <div class="info-row"><strong>Tools</strong><span style="margin-left:auto" class="muted">Android Studio • Git • Figma</span></div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Marwa, an Android developer from Alexandria, Egypt, currently pursuing my Bachelor's degree in Computer Science & Artificial Intelligence at Pharos University with a GPA of 3.7.</p>
+                    <p>I'm passionate about creating impactful mobile applications and exploring the intersection of technology and education. Currently, I'm working as a Coding Instructor at MsarTech Academy, where I teach programming fundamentals to children through Scratch, and I'm also completing advanced training through the DEPI program in native Android development.</p>
+                    <p>I love building projects that combine my technical skills with creative problem-solving, whether it's developing Android apps, analyzing data, or creating engaging web experiences.</p>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div>
-          <div class="info-card">
-            <h3 style="margin-top:0">Contact</h3>
-            <div class="info-row"><span class="muted">Location</span><strong style="margin-left:auto">Alexandria, Egypt</strong></div>
-            <div class="info-row"><span class="muted">Email</span><a style="margin-left:auto;color:var(--muted)" href="mailto:marwa.mohamed.asal@gmail.com">marwa.mohamed.asal@gmail.com</a></div>
-            <div class="info-row"><span class="muted">Phone</span><strong style="margin-left:auto">01097052325</strong></div>
-            <div style="margin-top:10px;display:flex;gap:8px">
-              <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-              <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
-            </div>
-            <div style="margin-top:12px" class="small muted">Open to internships & freelance in Android development.</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div style="display:flex;align-items:end;justify-content:space-between">
-        <div>
-          <h2>Projects</h2>
-          <div class="sub">Selected work — click a card to view details.</div>
-        </div>
-        <div style="align-self:center"><a class="muted" href="https://github.com/MarwaaMuhammad" target="_blank">View all on GitHub →</a></div>
-      </div>
-
-      <div class="projects-grid" style="margin-top:16px">
-        <!-- Card: MRI -->
-        <div class="card" data-title="MRI Brain Tumor Recognition" data-blurb="Classified brain tumors into 4 categories using medical imaging and deep learning techniques." data-features='["Image preprocessing & augmentation","CNN-based classification pipeline","Evaluation with accuracy & F1 score"]' data-stack='["Python","Deep Learning","NumPy","Pandas"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">MRI Tumor Recognition</div>
-          <h3>MRI Brain Tumor Recognition</h3>
-          <p class="muted" style="margin:0">Classifies brain tumors into 4 categories using medical imaging and ML.</p>
-          <div class="stack" aria-hidden="true">
-            <span class="chip">Python</span><span class="chip">Deep Learning</span><span class="chip">ML</span>
-          </div>
-        </div>
-
-        <!-- Card: Climate -->
-        <div class="card" data-title="Climate Change Impact on Agriculture" data-blurb="Data analysis project studying how climate variables affect agricultural productivity." data-features='["Feature engineering on climate metrics","Visualization dashboards","Regression & error analysis"]' data-stack='["Python","Pandas","Matplotlib"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">Climate & Agriculture</div>
-          <h3>Climate Change Impact on Agriculture</h3>
-          <p class="muted" style="margin:0">Analyzing climate variables and their effect on crop productivity.</p>
-          <div class="stack">
-            <span class="chip">Pandas</span><span class="chip">Data Analysis</span><span class="chip">Visualization</span>
-          </div>
-        </div>
-
-        <!-- Card: STC -->
-        <div class="card" data-title="STC Data Analysis" data-blurb="Explored public opinions and perspectives using data cleaning, EDA and reporting." data-features='["Sentiment exploration","Clean visual insights","Reproducible notebook"]' data-stack='["Python","Pandas","Jupyter"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">STC Data Analysis</div>
-          <h3>STC Data Analysis</h3>
-          <p class="muted" style="margin:0">Data cleaning, EDA and reporting for public opinion insights.</p>
-          <div class="stack">
-            <span class="chip">EDA</span><span class="chip">Sentiment</span><span class="chip">Notebooks</span>
-          </div>
-        </div>
-
-        <!-- Card: Hogwarts -->
-        <div class="card" data-title="Hogwarts Mart — E-Commerce Web App" data-blurb="Harry Potter-themed e-commerce site with front-end flow and responsive UI." data-features='["Product listing & cart","Checkout flow mock","Responsive UI"]' data-stack='["HTML","CSS","JavaScript"]' data-link="https://github.com/MarwaaMuhammad">
-          <div class="thumb">Hogwarts Mart</div>
-          <h3>Hogwarts Mart — E-Commerce Web App</h3>
-          <p class="muted" style="margin:0">Front-end store for themed merchandise with clean UX flows.</p>
-          <div class="stack">
-            <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">UX</span>
-          </div>
-        </div>
-
-        <!-- Card: Workout tracker (Android placeholder) -->
-        <div class="card" data-title="Workout Tracker (Android)" data-blurb="Track workouts, sets, and progress. Built with modern Android tooling and clean architecture." data-features='["Firebase Auth","Room local DB","Retrofit API","Charts with MPAndroidChart"]' data-stack='["Kotlin","MVVM","Jetpack"]' data-link="#">
-          <div class="thumb">Workout Tracker (Android)</div>
-          <h3>Workout Tracker (Android)</h3>
-          <p class="muted" style="margin:0">An Android app to log workouts and visualize progress (placeholder).</p>
-          <div class="stack">
-            <span class="chip">Kotlin</span><span class="chip">Jetpack</span><span class="chip">Room</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
+    <!-- Skills Section -->
     <section id="skills">
-      <h2>Skills</h2>
-      <div class="sub">Languages, frameworks and tools I use regularly.</div>
-      <div style="margin-top:12px" class="skills-grid">
-        <div class="skill">Kotlin</div>
-        <div class="skill">Java (OOP)</div>
-        <div class="skill">Android SDK</div>
-        <div class="skill">Jetpack Components</div>
-        <div class="skill">MVVM • Design Patterns</div>
-        <div class="skill">Python (advanced)</div>
-        <div class="skill">Pandas • NumPy</div>
-        <div class="skill">Git & GitHub</div>
-        <div class="skill">Figma</div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certs">
-      <h2>Certificates</h2>
-      <div class="sub">Some training and certificates I earned.</div>
-      <div style="margin-top:12px" class="cert-grid">
-        <div class="cert">Android Development — DEPI</div>
-        <div class="cert">ACPC Problem Solving</div>
-        <div class="cert">STC Data Analyst</div>
-        <div class="cert">Deep Learning Course</div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="sub">Send me a message — I’ll reply as soon as possible.</div>
-
-      <form id="contactForm" onsubmit="return false" style="margin-top:12px">
-        <div>
-          <div class="field">
-            <label class="small muted">Full name</label>
-            <input id="name" placeholder="Your name" required />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Email</label>
-            <input id="email" placeholder="you@example.com" required />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Subject</label>
-            <input id="subject" placeholder="Subject (e.g. Internship inquiry)" />
-          </div>
-          <div class="field" style="margin-top:10px">
-            <label class="small muted">Message</label>
-            <textarea id="message" rows="6" placeholder="Write your message..." required></textarea>
-          </div>
-
-          <div style="margin-top:12px">
-            <button class="send" id="sendBtn" type="submit">Send Message</button>
-            <div id="formMsg" class="small muted" style="margin-top:8px"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="info-card">
-            <h3 style="margin:0">Contact Info</h3>
-            <div style="margin-top:8px;color:var(--muted)">Email</div>
-            <a href="mailto:marwa.mohamed.asal@gmail.com" style="color:#fff;display:block;margin-top:6px">marwa.mohamed.asal@gmail.com</a>
-
-            <div style="margin-top:12px;color:var(--muted)">Phone</div>
-            <div style="color:#fff;margin-top:6px">01097052325</div>
-
-            <div style="margin-top:12px;color:var(--muted)">Location</div>
-            <div style="color:#fff;margin-top:6px">Alexandria, Egypt</div>
-
-            <div style="margin-top:12px;display:flex;gap:8px">
-              <a class="social" href="https://github.com/MarwaaMuhammad" target="_blank">GitHub</a>
-              <a class="social" href="https://www.linkedin.com/in/marwa-muhammad-8b4830289/" target="_blank">LinkedIn</a>
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Android Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Android SDK</span>
+                        <span class="skill-tag">Jetpack</span>
+                        <span class="skill-tag">Compose</span>
+                        <span class="skill-tag">Coroutines</span>
+                        <span class="skill-tag">MVVM</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>General</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Design Patterns</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div style="margin-top:12px;color:var(--muted);font-size:13px">
-            Note: This contact form validates on the client and copies the message to your clipboard for easy pasting into an email (no backend). You can connect it to an email service later.
-          </div>
         </div>
-      </form>
     </section>
 
+    <!-- Experience & Projects -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Experience & Projects</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Coding Instructor</h3>
+                    <div class="date">MsarTech Academy | July 2025 - Present</div>
+                    <ul>
+                        <li>Teaching programming fundamentals to children (ages 6–12) through Scratch</li>
+                        <li>Designing creative lesson plans that simplify coding concepts</li>
+                        <li>Creating a fun and supportive learning environment</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Android Mobile App Developer</h3>
+                    <div class="date">DEPI Program | June 2025 - December 2025</div>
+                    <ul>
+                        <li>Training in native Android development using Kotlin, Compose, and MDC</li>
+                        <li>Applied UI/UX basics, secure coding, Git/GitHub, and unit testing</li>
+                        <li>Completed Capstone Project showcasing end-to-end app development</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Hogwarts Mart</h3>
+                    <div class="date">2025</div>
+                    <p>Harry Potter–themed e-commerce website with responsive design, shopping cart functionality, and engaging thematic UI.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/marwa-mohamed-asal/Hogwarts-Mart" target="_blank">🔗 GitHub</a>
+                        <a href="#" target="_blank">🌐 Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>MRI Brain Tumor Recognition</h3>
+                    <div class="date">2024</div>
+                    <p>Classification model to detect and categorize brain tumors into 4 types using MRI images. Leveraged AI for healthcare applications to support early diagnosis.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/marwa-mohamed-asal/MRI-Brain-Tumor" target="_blank">🔗 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Climate Change Impact on Agriculture</h3>
+                    <div class="date">2024</div>
+                    <p>Data analysis using Python to study the impact of climate variables on agricultural productivity with statistical methods and visualization.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/marwa-mohamed-asal/Climate-Agriculture" target="_blank">🔗 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>STC Data Analysis Project</h3>
+                    <div class="date">2024</div>
+                    <p>Conducted data analysis on public opinion data using Python for data cleaning, exploration, and visualization to extract key insights.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/marwa-mohamed-asal/STC-Analysis" target="_blank">🔗 GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2>Education & Certificates</h2>
+            <div class="education-list">
+                <div class="education-item">
+                    <div>
+                        <h3>Bachelor of Computer Science & Artificial Intelligence</h3>
+                        <p>Pharos University in Alexandria (PUA) | GPA: 3.7</p>
+                    </div>
+                    <div class="year">2022 - 2026</div>
+                </div>
+                <div class="education-item">
+                    <div>
+                        <h3>Android Development Certificate</h3>
+                        <p>DEPI</p>
+                    </div>
+                    <div class="year">2025</div>
+                </div>
+                <div class="education-item">
+                    <div>
+                        <h3>Deep Learning Course Certificate</h3>
+                    </div>
+                    <div class="year">2024</div>
+                </div>
+                <div class="education-item">
+                    <div>
+                        <h3>STC Data Analyst Certification</h3>
+                    </div>
+                    <div class="year">2024</div>
+                </div>
+                <div class="education-item">
+                    <div>
+                        <h3>ACPC Problem Solving Certificate</h3>
+                    </div>
+                    <div class="year">2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="mailto:marwa.mohamed.asal@gmail.com" title="Email">📧</a>
+                    <a href="https://github.com/marwa-mohamed-asal" target="_blank" title="GitHub">💻</a>
+                    <a href="https://linkedin.com/in/marwa-muhammad" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      © <span id="year"></span> Marwa Muhammad
+        <p>&copy; 2025 Marwa Muhammad. All rights reserved.</p>
+        <p><a href="#home">Back to Top</a></p>
     </footer>
-  </main>
 
-  <button class="top-btn" id="topBtn" title="Back to top">↑ Top</button>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  <!-- Modal -->
-  <div id="modalRoot" aria-hidden="true" style="display:none"></div>
-
-  <script>
-    /* ---------- typed effect ---------- */
-    const phrases = [
-      "Android Developer • Kotlin & Java",
-      "I build apps that solve real problems",
-      "Mobile dev • MVVM • Jetpack • Firebase"
-    ];
-    let tIndex=0, charIndex=0, typing=true;
-    const typedEl=document.getElementById('typed');
-    (function typeLoop(){
-      const current = phrases[tIndex];
-      if(typing){
-        charIndex++;
-        typedEl.textContent = current.slice(0,charIndex);
-        if(charIndex === current.length){ typing=false; setTimeout(typeLoop,1200); return; }
-        setTimeout(typeLoop,40);
-      } else {
-        charIndex--;
-        typedEl.textContent = current.slice(0,charIndex);
-        if(charIndex===0){ typing=true; tIndex=(tIndex+1)%phrases.length; setTimeout(typeLoop,200); return; }
-        setTimeout(typeLoop,20);
-      }
-    })();
-
-    /* ---------- nav active on scroll ---------- */
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = Array.from(navLinks).map(a=>document.querySelector(a.getAttribute('href')));
-    function onScroll(){
-      const y = window.scrollY + 140;
-      let currentIndex = 0;
-      sections.forEach((s,i)=>{ if(s && s.offsetTop <= y) currentIndex = i; });
-      navLinks.forEach((a,i)=>a.classList.toggle('active', i===currentIndex));
-      // back to top
-      document.getElementById('topBtn').classList.toggle('show', window.scrollY > 500);
-    }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-
-    /* smooth link click for header smaller screens */
-    navLinks.forEach(a=>{
-      a.addEventListener('click', e=>{
-        navLinks.forEach(x=>x.classList.remove('active'));
-        a.classList.add('active');
-      })
-    });
-
-    /* ---------- project modal ---------- */
-    const cards = document.querySelectorAll('.card');
-    const modalRoot = document.getElementById('modalRoot');
-
-    function openModal(data){
-      modalRoot.innerHTML = '';
-      const backdrop = document.createElement('div');
-      backdrop.className = 'modal-backdrop';
-      backdrop.tabIndex = 0;
-      backdrop.innerHTML = `
-        <div class="modal" role="dialog" aria-modal="true">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3>${data.title}</h3>
-            <button id="closeModal" style="background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer">✕</button>
-          </div>
-          <div class="modal-grid" style="margin-top:12px">
-            <div>
-              <p style="color:var(--muted)">${data.blurb}</p>
-              <h4 style="margin-top:12px;color:#fff">Key features</h4>
-              <ul style="color:var(--muted);margin-top:8px"></ul>
-              <div style="margin-top:12px">
-                <a href="${data.link}" target="_blank" style="color:var(--accent)">View on GitHub →</a>
-              </div>
-            </div>
-            <div>
-              <div class="screenshot">Screenshot</div>
-              <div style="margin-top:10px;color:var(--muted);font-size:13px">Tech stack</div>
-              <div style="margin-top:8px" id="stackContainer"></div>
-            </div>
-          </div>
-        </div>
-      `;
-      modalRoot.appendChild(backdrop);
-      modalRoot.style.display = 'block';
-      // populate features
-      const ul = backdrop.querySelector('ul');
-      data.features.forEach(f=>{
-        const li = document.createElement('li'); li.style.margin='8px 0'; li.style.color='var(--muted)'; li.textContent = f; ul.appendChild(li);
-      });
-      const stackC = backdrop.querySelector('#stackContainer');
-      data.stack.forEach(s=>{
-        const sp = document.createElement('span'); sp.className = 'chip'; sp.style.marginRight='8px'; sp.textContent = s; stackC.appendChild(sp);
-      });
-      // close handlers
-      backdrop.querySelector('#closeModal').addEventListener('click', closeModal);
-      backdrop.addEventListener('click', (ev)=>{ if(ev.target === backdrop) closeModal(); });
-      document.addEventListener('keydown', escClose);
-      function escClose(e){ if(e.key === 'Escape') closeModal(); }
-      function closeModal(){
-        modalRoot.style.display = 'none';
-        modalRoot.innerHTML = '';
-        document.removeEventListener('keydown', escClose);
-      }
-    }
-
-    cards.forEach(c=>{
-      c.addEventListener('click', ()=> {
-        const data = {
-          title: c.dataset.title,
-          blurb: c.dataset.blurb,
-          features: JSON.parse(c.dataset.features),
-          stack: JSON.parse(c.dataset.stack),
-          link: c.dataset.link
-        };
-        openModal(data);
-      });
-    });
-
-    /* ---------- contact form validation & clipboard copy ---------- */
-    const form = document.getElementById('contactForm');
-    const nameI = document.getElementById('name');
-    const emailI = document.getElementById('email');
-    const subjectI = document.getElementById('subject');
-    const messageI = document.getElementById('message');
-    const sendBtn = document.getElementById('sendBtn');
-    const formMsg = document.getElementById('formMsg');
-
-    sendBtn.addEventListener('click', async ()=>{
-      formMsg.textContent = '';
-      const name = nameI.value.trim(), email = emailI.value.trim(), msg = messageI.value.trim();
-      if(name.length < 2){ formMsg.textContent = 'Please enter your full name.'; return; }
-      const emailRe = /^[^@]+@[^@]+\.[^@]+$/;
-      if(!emailRe.test(email)){ formMsg.textContent = 'Please enter a valid email address.'; return; }
-      if(msg.length < 12){ formMsg.textContent = 'Message should be at least 12 characters.'; return; }
-
-      // Compose a message and copy to clipboard for the user (no backend)
-      const subject = subjectI.value.trim() || 'Portfolio message';
-      const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${msg}`;
-      try {
-        await navigator.clipboard.writeText(body);
-        formMsg.style.color = 'var(--muted)';
-        formMsg.textContent = 'Message validated and copied to clipboard. Paste it into your email app to send (mailto link created below).';
-        // open mailto link so user can send
-        const mailto = `mailto:marwa.mohamed.asal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        // small delay so user sees message then open mailto
-        setTimeout(()=>{ window.location.href = mailto; }, 700);
-      } catch (err){
-        formMsg.style.color = '#ffb4b4';
-        formMsg.textContent = 'Could not access clipboard — please copy manually: ' + body.slice(0,200) + '...';
-      }
-    });
-
-    /* ---------- back to top ---------- */
-    document.getElementById('topBtn').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-
-    /* current year */
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* accessibility: focus outline */
-    document.addEventListener('keydown', e => {
-      if(e.key === 'Tab') document.body.classList.add('show-focus');
-    });
-  </script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
